@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CharCrafter - Wiki</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/simbol.jpg" type="image/jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/simbol.jpg" alt="Logo simboli" class="logo-image">
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="wiki.html">Wiki</a></li>
+                <li><a href="https://www.reddit.com/r/CharCrafter/s/GuT2AtGCVy" target="_blank">Subreddit</a></li>
+                <li><a href="announce.html">Announcements</a></li>
+                <li><a href="https://github.com/AntDev210/charcraftergame">Download</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="https://www.buymeacoffee.com/AQUILtheeagle"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=AQUILtheeagle&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
+        </div>
+    </header>
+
+    <main class="wiki-main-container">
+        
+        <h1 class="wiki-page-title pixel-text">CharCrafter's WIKI</h1>
+
+        <div class="wiki-grid-layout">
+            
+            <!-- COLONNA SINISTRA: Articolo Dinamico -->
+            <section class="latest-article-section">
+                <h2 class="wiki-subtitle pixel-text" id="article-section-title">Latest Wiki Article</h2>
+                
+                <!-- Il contenuto qui dentro verrà sovrascritto da Javascript -->
+                <div class="featured-article-box" id="main-article-box">
+                    <!-- Placeholder nel caso JS non carichi -->
+                    <p>Caricamento dati...</p> 
+                </div>
+            </section>
+
+            <!-- COLONNA DESTRA: Categorie -->
+            <section class="categories-section">
+                <h2 class="wiki-subtitle pixel-text">Wiki Articles</h2>
+                
+                <div class="wiki-search-box">
+                    <input type="text" placeholder="Search article..." class="pixel-text" id="wiki-search">
+                </div>
+
+                <div class="categories-grid">
+                    <!-- I pulsanti chiamano la funzione loadCategory() -->
+                    <div class="cat-card filled" onclick="loadCategory('NPCs')">
+                        <span class="cat-name pixel-text">NPCs</span>
+                        <span class="cat-count" id="count-NPCs">0 articles</span>
+                    </div>
+
+                    <div class="cat-card" onclick="loadCategory('Objects')">
+                        <span class="cat-name pixel-text">Objects</span>
+                        <span class="cat-count" id="count-Objects">0 articles</span>
+                    </div>
+
+                    <div class="cat-card" onclick="loadCategory('Tiles')">
+                        <span class="cat-name pixel-text">Tiles</span>
+                        <span class="cat-count" id="count-Tiles">0 articles</span>
+                    </div>
+
+                    <div class="cat-card" onclick="loadCategory('Functions')">
+                        <span class="cat-name pixel-text">Functions</span>
+                        <span class="cat-count" id="count-Functions">0 articles</span>
+                    </div>
+
+                    <div class="cat-card" onclick="loadCategory('Bosses')">
+                        <span class="cat-name pixel-text">Bosses</span>
+                        <span class="cat-count" id="count-Bosses">0 articles</span>
+                    </div>
+
+                    <div class="cat-card" onclick="loadAllArticles()">
+                        <span class="cat-name pixel-text">ALL</span>
+                        <span class="cat-count" id="count-Total">0 articles</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Importiamo i Dati e la Logica -->
+    <script src="js/wiki-data.js"></script>
+    <script>
+        // --- LOGICA WIKI ---
+
+        // 1. All'avvio, carica l'articolo "CharCrafter" e conta gli articoli
+        document.addEventListener('DOMContentLoaded', () => {
+            loadArticle('General', 'charcrafter');
+            updateCounts();
+        });
+
+        // Funzione per caricare un articolo specifico
+        function loadArticle(category, id) {
+            const articleData = wikiData[category].find(item => item.id === id);
+            if (!articleData) return;
+
+            const container = document.getElementById('main-article-box');
+            
+            // Creiamo l'HTML per l'infobox se esiste
+            let infoboxHTML = '';
+            if (articleData.infobox) {
+                infoboxHTML = '<div class="wiki-infobox"><h4 class="pixel-text">Info</h4><table>';
+                for (const [key, value] of Object.entries(articleData.infobox)) {
+                    infoboxHTML += `<tr><td>${key}</td><td>${value}</td></tr>`;
+                }
+                infoboxHTML += '</table></div>';
+            }
+
+            // Iniettiamo il contenuto
+            container.innerHTML = `
+                <div class="article-header">
+                    <h3 class="pixel-text big-title">${articleData.title}</h3>
+                </div>
+                <div class="article-body-container">
+                    ${infoboxHTML}
+                    <div class="article-content">
+                        ${articleData.content}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('article-section-title').innerText = "Reading: " + articleData.title;
+        }
+
+        // Funzione Placeholder per i pulsanti categoria
+        function loadCategory(catName) {
+            const container = document.getElementById('main-article-box');
+            const list = wikiData[catName];
+            
+            if (!list || list.length === 0) {
+                container.innerHTML = `<h3 class="pixel-text big-title">${catName}</h3><p>Nessun articolo trovato in questa categoria.</p>`;
+                return;
+            }
+
+            // Genera una lista di link
+            let listHTML = `<h3 class="pixel-text big-title">Category: ${catName}</h3><ul class="wiki-list">`;
+            list.forEach(item => {
+                // Usiamo un trucco onclick per caricare l'articolo
+                listHTML += `<li><a href="#" onclick="loadArticle('${catName}', '${item.id}')" class="wiki-link">${item.title}</a> - ${item.description}</li>`;
+            });
+            listHTML += `</ul>`;
+
+            container.innerHTML = listHTML;
+            document.getElementById('article-section-title').innerText = "Category Selection";
+        }
+
+        function loadAllArticles() {
+             // Logica simile a loadCategory ma per tutto
+             alert("Funzionalità 'Mostra Tutto' in arrivo!"); 
+        }
+
+        // Aggiorna i numerini "99 articles" nei bottoni
+        function updateCounts() {
+            let total = 0;
+            for (const [key, value] of Object.entries(wikiData)) {
+                const count = value.length;
+                const badge = document.getElementById(`count-${key}`);
+                if (badge) badge.innerText = `${count} articles`;
+                if(key !== "General") total += count; // Escludiamo General dal totale se vogliamo solo gli item di gioco
+            }
+            // Aggiungiamo General al totale o no? Facciamo di sì
+            total += wikiData["General"].length;
+            document.getElementById('count-Total').innerText = `${total} articles`;
+        }
+    </script>
+
+</body>
+</html>
