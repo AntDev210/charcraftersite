@@ -75,7 +75,7 @@ header {
     
     /* Forma e bordi */
     padding: 10px 20px;
-    border-radius: 8px; /* Arrotondamento standard */
+    border-radius: 0px; /* Arrotondamento standard */
     /* Se vuoi un look più "pixel art", cambia border-radius a 0px o 4px */
     border: 1px solid transparent;
     
@@ -233,4 +233,5 @@ h2.subtitle {
         width: 100%;
     }
 }
+
 
