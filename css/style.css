@@ -56,19 +56,53 @@ header {
 }
 
 .donate-btn {
-    background-color: #ffcc00;
-    color: #000;
-    text-decoration: none;
-    padding: 0.5rem 0.75rem;
-    font-weight: bold;
-    border: none;
-    cursor: pointer;
+    /* Layout e allineamento */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Spazio tra icona e testo */
+    
+    /* Colori e stile BMC */
+    background-color: #FFDD00; /* Giallo ufficiale BMC */
+    color: #000000;
+    
+    /* Tipografia */
     font-family: 'VT323', monospace;
-    transition: background-color 0.3s;
+    font-size: 24px; /* Aumentato per lo stile pixel */
+    text-decoration: none;
+    line-height: 1;
+    letter-spacing: 1px;
+    
+    /* Forma e bordi */
+    padding: 10px 20px;
+    border-radius: 8px; /* Arrotondamento standard */
+    /* Se vuoi un look più "pixel art", cambia border-radius a 0px o 4px */
+    border: 1px solid transparent;
+    
+    /* Interazione */
+    cursor: pointer;
+    box-shadow: 0px 4px 0px rgba(0,0,0,0.1); /* Ombra solida sotto */
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
+/* Effetto al passaggio del mouse */
 .donate-btn:hover {
-    background-color: #00ff00;
+    background-color: #ffea5c; /* Leggermente più chiaro */
+    transform: translateY(-2px); /* Si alza leggermente */
+    box-shadow: 0px 6px 0px rgba(0,0,0,0.1);
+}
+
+/* Effetto al click */
+.donate-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0px 2px 0px rgba(0,0,0,0.1);
+}
+
+/* Stile per l'icona dentro il bottone */
+.donate-btn img {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
 }
 
 main {
@@ -199,3 +233,4 @@ h2.subtitle {
         width: 100%;
     }
 }
+
