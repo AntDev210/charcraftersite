@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CharCrafter - Wiki</title>
+    <title>CharCrafter - Wiki Index</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/wiki-style.css"> 
     <link rel="icon" href="images/simbol.jpg" type="image/jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -33,20 +35,18 @@
 
     <main class="wiki-main-block">
         
-        <!-- Titolo allineato a sinistra -->
-        <h1 class="wiki-main-title pixel-text" style="text-align: left;">CharCrafter's WIKI</h1>
+        <h1 class="wiki-main-title pixel-text">CharCrafter's WIKI INDEX</h1>
 
         <div class="wiki-layout-grid">
             
-            <!-- COLONNA SINISTRA: Ultimo Articolo (Caricato via JS) -->
             <section class="left-column">
-                <h2 class="wiki-section-title pixel-text">Latest Wiki Article</h2>
+                <h2 class="wiki-section-title pixel-text" id="category-index-title">Select a Category</h2>
+                
                 <div class="article-box" id="main-article-box">
-                    <p>Caricamento dati...</p> 
+                    <p>Click on one of the categories on the right to view the available articles, or access the main <a href="article.html?cat=General&id=charcrafter">CharCrafter</a> page.</p> 
                 </div>
             </section>
 
-            <!-- COLONNA DESTRA: Ricerca e Cartelle -->
             <section class="right-column">
                 <h2 class="wiki-section-title pixel-text">Wiki Articles</h2>
                 
@@ -54,37 +54,36 @@
                     <input type="text" placeholder="Search article..." class="pixel-text" id="wiki-search">
                 </div>
 
-                <!-- I pulsanti ora sono LINK alle pagine di lista -->
                 <div class="buttons-grid">
-                    <a href="wiki_list.html?cat=NPCs" class="wiki-btn filled">
+                    <div class="wiki-btn filled" onclick="loadCategory('NPCs')">
                         <span class="btn-text pixel-text">NPCs</span>
                         <span class="btn-sub" id="count-NPCs">0 articles</span>
-                    </a>
+                    </div>
 
-                    <a href="wiki_list.html?cat=Objects" class="wiki-btn">
+                    <div class="wiki-btn" onclick="loadCategory('Objects')">
                         <span class="btn-text pixel-text">Objects</span>
                         <span class="btn-sub" id="count-Objects">0 articles</span>
-                    </a>
+                    </div>
 
-                    <a href="wiki_list.html?cat=Tiles" class="wiki-btn">
+                    <div class="wiki-btn" onclick="loadCategory('Tiles')">
                         <span class="btn-text pixel-text">Tiles</span>
                         <span class="btn-sub" id="count-Tiles">0 articles</span>
-                    </a>
+                    </div>
 
-                    <a href="wiki_list.html?cat=Functions" class="wiki-btn">
+                    <div class="wiki-btn" onclick="loadCategory('Functions')">
                         <span class="btn-text pixel-text">Functions</span>
                         <span class="btn-sub" id="count-Functions">0 articles</span>
-                    </a>
+                    </div>
 
-                    <a href="wiki_list.html?cat=Bosses" class="wiki-btn">
+                    <div class="wiki-btn" onclick="loadCategory('Bosses')">
                         <span class="btn-text pixel-text">Bosses</span>
                         <span class="btn-sub" id="count-Bosses">0 articles</span>
-                    </a>
+                    </div>
 
-                    <a href="wiki_list.html?cat=ALL" class="wiki-btn">
-                        <span class="btn-text pixel-text">ALL</span>
-                        <span class="btn-sub" id="count-Total">0 articles</span>
-                    </a>
+                    <div class="wiki-btn" onclick="loadCategory('General')">
+                        <span class="btn-text pixel-text">General</span>
+                        <span class="btn-sub" id="count-General">0 articles</span>
+                    </div>
                 </div>
             </section>
 
@@ -92,75 +91,44 @@
     </main>
 
     <script src="js/categories/general/charcrafter.js"></script>
-
     <script src="js/categories/npcs/villager.js"></script>
-
     <script src="js/wiki-data.js"></script>
     
     <script>
-        // ... (Il codice di loadArticle, loadCategory, updateCounts rimane invariato e funziona!) ...
         document.addEventListener('DOMContentLoaded', () => {
-            loadArticle('General', 'charcrafter');
             updateCounts();
         });
 
-        function loadArticle(category, id) {
-            const articleData = wikiData[category].find(item => item.id === id);
-            if (!articleData) return;
-
-            const container = document.getElementById('main-article-box');
-            
-            // Genera tabella info se esiste
-            let infoboxHTML = '';
-            if (articleData.infobox) {
-                infoboxHTML = '<div class="infobox"><table>';
-                for (const [key, value] of Object.entries(articleData.infobox)) {
-                    infoboxHTML += `<tr><td class="info-label">${key}</td><td class="info-val">${value}</td></tr>`;
-                }
-                infoboxHTML += '</table></div>';
-            }
-
-            container.innerHTML = `
-                <h3 class="article-title pixel-text">${articleData.title}</h3>
-                <div class="article-body">
-                    <div class="text-part">${articleData.content}</div>
-                    ${infoboxHTML}
-                </div>
-            `;
-        }
-
         function loadCategory(catName) {
             const container = document.getElementById('main-article-box');
+            const title = document.getElementById('category-index-title');
             const list = wikiData[catName];
             
+            title.innerText = catName + ' Articles';
+
             if (!list || list.length === 0) {
-                container.innerHTML = `<h3 class="article-title pixel-text">${catName}</h3><p>No articles found.</p>`;
+                container.innerHTML = `<p>No articles found in the ${catName} category.</p>`;
                 return;
             }
 
-            let html = `<h3 class="article-title pixel-text">${catName}</h3><ul class="wiki-list-items">`;
+            let html = `<ul class="wiki-list-items">`;
             list.forEach(item => {
-                html += `<li><a href="#" onclick="loadArticle('${catName}', '${item.id}')">> ${item.title}</a></li>`;
+                // *** NUOVA FUNZIONALITÀ: Link alla pagina article.html ***
+                html += `<li><a href="article.html?cat=${catName}&id=${item.id}"> > ${item.title}</a></li>`;
             });
             html += `</ul>`;
             container.innerHTML = html;
         }
         
-        function loadAllArticles() {
-             const container = document.getElementById('main-article-box');
-             container.innerHTML = `<h3 class="article-title pixel-text">All Articles</h3><p>Select a category to view specific articles.</p>`;
-        }
-
         function updateCounts() {
             let total = 0;
             for (const [key, value] of Object.entries(wikiData)) {
                 const count = value.length;
                 const badge = document.getElementById(`count-${key}`);
                 if (badge) badge.innerText = `${count} articles`;
-                total += count;
+                total += count; 
             }
-            const totalBadge = document.getElementById('count-Total');
-            if(totalBadge) totalBadge.innerText = `${total} articles`;
+            // Non visualizziamo il totale, ma manteniamo la variabile per eventuali futuri usi.
         }
     </script>
 </body>
