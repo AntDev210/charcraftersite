@@ -3,7 +3,8 @@ const article_CharCrafter = {
     title: "CharCrafter",
     description: "CharCrafter is an independent 2D sandbox/RPG terminal game currently being developed by the Italian programmer known by the pseudonym 'AQUIL the eagle'. The game is notable for its entirely alphanumeric (ASCII) graphics and its extremely small file size (about 2 MB).",
     content: `
-    
+        <p>CharCrafter is an independent 2D sandbox/RPG terminal game currently being developed by the Italian programmer known by the pseudonym 'AQUIL the eagle'. The game is notable for its entirely alphanumeric (ASCII) graphics and its extremely small file size (about 2 MB).</p>
+        
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">DEVELOPMENT</h3>
         <p>The CharCrafter project originated with an initial attempt in late 2023, a version that the author defines as "simple and uncontinued" and more oriented towards the RPG genre. The current version, considered definitive, has been entirely recreated and developed since early July 2025. The goal of this second phase of development was to create a more extensive gaming experience focused on the sandbox genre.</p> 
         <p>The developer has clarified that the design and implementations are original and do not draw direct inspiration from similar titles like Terraria or Minecraft, with the implementations being based on ideas created by him and his friends.</p>
