@@ -77,4 +77,106 @@
 
                     <div class="wiki-btn" onclick="loadCategory('Bosses')">
                         <span class="btn-text pixel-text">Bosses</span>
-                        <span class="btn-sub" id="count-Bosses
+                        <span class="btn-sub" id="count-Bosses">0 articles</span>
+                    </div>
+
+                    <div class="wiki-btn" onclick="loadCategory('General')">
+                        <span class="btn-text pixel-text">General</span>
+                        <span class="btn-sub" id="count-General">0 articles</span>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="js/categories/general/charcrafter.js"></script>
+    <script src="js/categories/npcs/villager.js"></script>
+    <script src="js/wiki-data.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadLatestArticlePreview(); // <-- NUOVO: Carica l'anteprima
+            updateCounts();
+        });
+
+        // NUOVA FUNZIONE: Carica l'anteprima dell'articolo più recente
+        function loadLatestArticlePreview() {
+            // Assumiamo che CharCrafter sia l'articolo più recente (General[0])
+            const articleData = wikiData["General"][0]; 
+            const container = document.getElementById('main-article-box');
+            const titleElement = document.getElementById('category-index-title');
+
+            if (!articleData) {
+                container.innerHTML = `<p>No recent article data found.</p>`;
+                return;
+            }
+
+            // 1. Estrae i paragrafi
+            // Usiamo un elemento temporaneo per convertire la stringa HTML in nodi DOM
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = articleData.content.trim();
+            const paragraphs = tempDiv.querySelectorAll('p');
+
+            let previewHTML = '';
+            const maxLines = 3; 
+
+            // 2. Costruisce l'anteprima con i primi 3 paragrafi
+            for (let i = 0; i < Math.min(paragraphs.length, maxLines); i++) {
+                previewHTML += paragraphs[i].outerHTML;
+            }
+
+            // 3. Inserisce il contenuto
+            titleElement.innerText = 'Latest Article: ' + articleData.title;
+            
+            container.innerHTML = `
+                <h3 class="article-title pixel-text" style="margin-top: 0; color: #00ff00;">
+                    <a href="article.html?cat=General&id=${articleData.id}" style="text-decoration: none; color: inherit;">
+                        ${articleData.title}
+                    </a>
+                </h3>
+                <p>---</p>
+                <div class="article-preview-text">
+                    ${previewHTML}
+                </div>
+                <p style="text-align: right; margin-top: 10px;">
+                    <a href="article.html?cat=General&id=${articleData.id}" class="pixel-text" style="font-size: 1rem; color: #00ff00;">[Read More >>]</a>
+                </p>
+            `;
+            // Nota: La classe .article-title usa lo stile che hai definito nel CSS per i link (bianco/verde)
+        }
+        
+        // FUNZIONE INVARIATA: Carica la lista degli articoli di una categoria
+        function loadCategory(catName) {
+            const container = document.getElementById('main-article-box');
+            const title = document.getElementById('category-index-title');
+            const list = wikiData[catName];
+            
+            title.innerText = catName + ' Articles';
+
+            if (!list || list.length === 0) {
+                container.innerHTML = `<p>No articles found in the ${catName} category.</p>`;
+                return;
+            }
+
+            let html = `<ul class="wiki-list-items">`;
+            list.forEach(item => {
+                html += `<li><a href="article.html?cat=${catName}&id=${item.id}"> > ${item.title}</a></li>`;
+            });
+            html += `</ul>`;
+            container.innerHTML = html;
+        }
+        
+        // FUNZIONE INVARIATA: Aggiorna i conteggi
+        function updateCounts() {
+            let total = 0;
+            for (const [key, value] of Object.entries(wikiData)) {
+                const count = value.length;
+                const badge = document.getElementById(`count-${key}`);
+                if (badge) badge.innerText = `${count} articles`;
+                total += count; 
+            }
+        }
+    </script>
+</body>
+</html>
