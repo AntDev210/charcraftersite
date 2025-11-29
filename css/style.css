@@ -55,54 +55,105 @@ header {
     align-items: center;
 }
 
-.donate-btn {
-    /* Layout e allineamento */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* Container Generale */
+.pixel-bmc-container {
     display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px; /* Spazio tra icona e testo */
-    
-    /* Colori e stile BMC */
-    background-color: #FFDD00; /* Giallo ufficiale BMC */
-    color: #000000;
-    
-    /* Tipografia */
+    align-items: center; /* Allinea pulsante e contatore */
+    gap: 0; /* Nessuno spazio, devono sembrare uniti */
     font-family: 'VT323', monospace;
-    font-size: 24px; /* Aumentato per lo stile pixel */
+    position: relative;
+    z-index: 10;
+}
+
+/* Stile del Pulsante Giallo */
+.pixel-btn {
+    background-color: #FFDD00;
+    color: #000;
     text-decoration: none;
-    line-height: 1;
-    letter-spacing: 1px;
-    
-    /* Forma e bordi */
-    padding: 10px 20px;
-    border-radius: 0px; /* Arrotondamento standard */
-    /* Se vuoi un look più "pixel art", cambia border-radius a 0px o 4px */
-    border: 1px solid transparent;
-    
-    /* Interazione */
+    font-size: 24px;
+    padding: 10px 15px;
+    border: 2px solid #000;
+    border-right: none; /* Rimuove il bordo destro per unirlo al contatore */
+    display: flex;
+    align-items: center;
+    gap: 10px;
     cursor: pointer;
-    box-shadow: 0px 4px 0px rgba(0,0,0,0.1); /* Ombra solida sotto */
-    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    position: relative;
+    box-shadow: 0 4px 0 #000; /* Ombra solida pixel */
+    transition: transform 0.1s;
 }
 
-/* Effetto al passaggio del mouse */
-.donate-btn:hover {
-    background-color: #ffea5c; /* Leggermente più chiaro */
-    transform: translateY(-2px); /* Si alza leggermente */
-    box-shadow: 0px 6px 0px rgba(0,0,0,0.1);
+/* Icona caffè */
+.pixel-btn .icon {
+    font-size: 28px;
 }
 
-/* Effetto al click */
-.donate-btn:active {
+/* Stile del Contatore (Parte bianca/grigia a destra) */
+.pixel-counter {
+    background-color: #ffffff;
+    color: #000;
+    text-decoration: none;
+    font-size: 24px;
+    padding: 10px 15px;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 4px 4px 0 #000; /* L'ombra segue il blocco intero */
+    transition: transform 0.1s;
+}
+
+.pixel-counter .heart-icon {
+    color: #ff4757;
+}
+
+/* Effetto Hover su tutto il blocco */
+.pixel-bmc-container:hover .pixel-btn,
+.pixel-bmc-container:hover .pixel-counter {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #000; /* L'ombra si allunga */
+}
+
+/* Effetto Click */
+.pixel-btn:active, .pixel-counter:active {
     transform: translateY(2px);
-    box-shadow: 0px 2px 0px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 0 #000;
 }
 
-/* Stile per l'icona dentro il bottone */
-.donate-btn img {
-    width: 20px;
-    height: 20px;
-    vertical-align: middle;
+/* --- ANIMAZIONE CUORI VOLANTI --- */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Permette di cliccare attraverso i cuori */
+    z-index: 9999;
+    overflow: hidden;
+}
+
+.floating-heart {
+    position: absolute;
+    font-size: 24px;
+    user-select: none;
+    animation: floatUp 1.5s ease-out forwards;
+}
+
+/* Animazione che porta il cuore verso l'alto e lo fa svanire */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) scale(1) rotate(0deg);
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(1.5) rotate(20deg);
+        opacity: 0;
+    }
 }
 
 main {
@@ -233,6 +284,7 @@ h2.subtitle {
         width: 100%;
     }
 }
+
 
 
 
