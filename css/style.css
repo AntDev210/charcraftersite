@@ -12,15 +12,25 @@ body {
     font-size: 1rem;
 }
 
+/* Modifica l'header */
 header {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between;  <-- Rimuovi o ignora questa riga, useremo flex:1 sotto */
     align-items: center;
     padding: 1.25rem 2.5rem;
     border-bottom: 2px solid #333;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Importante per il mobile */
 }
 
+/* Aggiungi/Modifica .logo-container */
+.logo-container {
+    flex: 1; /* Occupa tutto lo spazio disponibile a sinistra */
+}
+
+/* Opzionale: Assicurati che il menu non si allarghi troppo */
+.main-nav {
+    flex: 0 auto;
+}
 .logo-image {
     height: 80px;
 }
@@ -49,10 +59,13 @@ header {
     color: #00ff00;
 }
 
+/* Modifica .user-actions */
 .user-actions {
     display: flex;
     gap: 15px;
     align-items: center;
+    flex: 1; /* Occupa lo stesso spazio del logo, bilanciando il layout */
+    justify-content: flex-end; /* Spinge il pulsante caffè tutto a destra */
 }
 
 main {
@@ -183,6 +196,7 @@ h2.subtitle {
         width: 100%;
     }
 }
+
 
 
 
