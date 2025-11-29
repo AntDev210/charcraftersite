@@ -96,8 +96,22 @@
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            loadLatestArticlePreview(); // <-- NUOVO: Carica l'anteprima
+            loadLatestArticlePreview();
             updateCounts();
+        
+            // NUOVO: Inizializza la categoria di default (General)
+            window.currentCategory = "General"; 
+            
+            // NUOVO: Aggiunge l'ascoltatore di eventi al campo di ricerca
+            document.getElementById('wiki-search').addEventListener('input', (event) => {
+                const searchTerm = event.target.value;
+                if (window.currentCategory) {
+                    generateArticleList(window.currentCategory, searchTerm);
+                } else {
+                    // Se nessuna categoria è selezionata, potresti voler cercare in tutte (opzionale)
+                    // Per ora, non facciamo nulla.
+                }
+            });
         });
 
         // NUOVA FUNZIONE: Carica l'anteprima dell'articolo più recente
@@ -148,25 +162,58 @@
         
         // FUNZIONE INVARIATA: Carica la lista degli articoli di una categoria
         function loadCategory(catName) {
+            // 1. Rimuovi la classe 'filled' da tutti i pulsanti (reset)
+            document.querySelectorAll('.buttons-grid .wiki-btn').forEach(btn => {
+                btn.classList.remove('filled');
+            });
+
+            // 2. Aggiungi la classe 'filled' al pulsante cliccato
+            const clickedButton = document.querySelector(`.buttons-grid .wiki-btn[onclick="loadCategory('${catName}')"]`);
+            if (clickedButton) {
+                clickedButton.classList.add('filled');
+            }
+    
+            // NUOVO: Imposta la categoria corrente e azzera il campo di ricerca
+            window.currentCategory = catName; 
+            document.getElementById('wiki-search').value = ''; 
+
+            // 3. Genera l'elenco degli articoli
+            generateArticleList(catName, ''); // Chiama la nuova funzione di generazione lista
+        }
+        function generateArticleList(catName, searchTerm) {
             const container = document.getElementById('main-article-box');
             const title = document.getElementById('category-index-title');
             const list = wikiData[catName];
             
             title.innerText = catName + ' Articles';
-
+        
             if (!list || list.length === 0) {
                 container.innerHTML = `<p>No articles found in the ${catName} category.</p>`;
                 return;
             }
-
+            
+            // Filtra gli articoli in base al termine di ricerca
+            const filteredList = list.filter(item => {
+                if (!searchTerm) return true; // Nessun filtro
+                const lowerSearch = searchTerm.toLowerCase();
+                
+                // Cerca nel titolo o nella descrizione
+                return item.title.toLowerCase().includes(lowerSearch) || 
+                       item.description.toLowerCase().includes(lowerSearch);
+            });
+            
+            if (filteredList.length === 0) {
+                container.innerHTML = `<p>No results found for "${searchTerm}" in ${catName}.</p>`;
+                return;
+            }
+        
             let html = `<ul class="wiki-list-items">`;
-            list.forEach(item => {
+            filteredList.forEach(item => {
                 html += `<li><a href="article.html?cat=${catName}&id=${item.id}"> > ${item.title}</a></li>`;
             });
             html += `</ul>`;
             container.innerHTML = html;
         }
-        
         // FUNZIONE INVARIATA: Aggiorna i conteggi
         function updateCounts() {
             let total = 0;
