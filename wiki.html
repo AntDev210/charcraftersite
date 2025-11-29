@@ -4,19 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CharCrafter - Wiki</title>
-    <!-- Carichiamo prima lo stile base, poi quello specifico della wiki -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/wiki-style.css"> 
     <link rel="icon" href="images/simbol.jpg" type="image/jpg">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <div class="logo-container">
-            <img src="images/simbol.jpg" alt="Logo simboli" class="logo-image">
+            <a href="index.html">
+                <img src="images/simbol.jpg" alt="Logo simboli" class="logo-image">
+            </a>
         </div>
         <nav class="main-nav">
             <ul>
@@ -32,84 +31,83 @@
         </div>
     </header>
 
-    <!-- Usiamo una classe specifica per "spegnere" il display: flex del main originale -->
     <main class="wiki-main-block">
-        <header>
-            <h1 class="wiki-main-title pixel-text">CharCrafter's WIKI</h1>
-        </header>
+        
+        <!-- Titolo allineato a sinistra -->
+        <h1 class="wiki-main-title pixel-text" style="text-align: left;">CharCrafter's WIKI</h1>
 
         <div class="wiki-layout-grid">
             
-            <!-- COLONNA SINISTRA (60%): Ultimo Articolo -->
+            <!-- COLONNA SINISTRA: Ultimo Articolo (Caricato via JS) -->
             <section class="left-column">
                 <h2 class="wiki-section-title pixel-text">Latest Wiki Article</h2>
-                
                 <div class="article-box" id="main-article-box">
-                    <!-- Contenuto caricato via JS -->
-                    <p>loading...</p> 
+                    <p>Caricamento dati...</p> 
                 </div>
             </section>
 
-            <!-- COLONNA DESTRA (40%): Ricerca e Categorie -->
-            <aside class="right-column">
+            <!-- COLONNA DESTRA: Ricerca e Cartelle -->
+            <section class="right-column">
                 <h2 class="wiki-section-title pixel-text">Wiki Articles</h2>
                 
-                <!-- Barra di Ricerca -->
                 <div class="search-container">
                     <input type="text" placeholder="Search article..." class="pixel-text" id="wiki-search">
                 </div>
 
-                <!-- Griglia pulsanti (2 colonne interne) -->
+                <!-- I pulsanti ora sono LINK alle pagine di lista -->
                 <div class="buttons-grid">
-                    <div class="wiki-btn filled" onclick="loadCategory('NPCs')">
+                    <a href="wiki_list.html?cat=NPCs" class="wiki-btn filled">
                         <span class="btn-text pixel-text">NPCs</span>
                         <span class="btn-sub" id="count-NPCs">0 articles</span>
-                    </div>
+                    </a>
 
-                    <div class="wiki-btn" onclick="loadCategory('Objects')">
+                    <a href="wiki_list.html?cat=Objects" class="wiki-btn">
                         <span class="btn-text pixel-text">Objects</span>
                         <span class="btn-sub" id="count-Objects">0 articles</span>
-                    </div>
+                    </a>
 
-                    <div class="wiki-btn" onclick="loadCategory('Tiles')">
+                    <a href="wiki_list.html?cat=Tiles" class="wiki-btn">
                         <span class="btn-text pixel-text">Tiles</span>
                         <span class="btn-sub" id="count-Tiles">0 articles</span>
-                    </div>
+                    </a>
 
-                    <div class="wiki-btn" onclick="loadCategory('Functions')">
+                    <a href="wiki_list.html?cat=Functions" class="wiki-btn">
                         <span class="btn-text pixel-text">Functions</span>
                         <span class="btn-sub" id="count-Functions">0 articles</span>
-                    </div>
+                    </a>
 
-                    <div class="wiki-btn" onclick="loadCategory('Bosses')">
+                    <a href="wiki_list.html?cat=Bosses" class="wiki-btn">
                         <span class="btn-text pixel-text">Bosses</span>
                         <span class="btn-sub" id="count-Bosses">0 articles</span>
-                    </div>
+                    </a>
 
-                    <div class="wiki-btn" onclick="loadAllArticles()">
+                    <a href="wiki_list.html?cat=ALL" class="wiki-btn">
                         <span class="btn-text pixel-text">ALL</span>
                         <span class="btn-sub" id="count-Total">0 articles</span>
-                    </div>
+                    </a>
                 </div>
-            </aside>
+            </section>
 
         </div>
     </main>
 
     <script src="js/wiki-data.js"></script>
     <script>
+        // Script specifico per la HOME della Wiki
         document.addEventListener('DOMContentLoaded', () => {
-            loadArticle('General', 'charcrafter');
+            // 1. Carica l'articolo principale "CharCrafter"
+            loadHomeArticle('General', 'charcrafter'); 
+            
+            // 2. Aggiorna i contatori nei pulsanti
             updateCounts();
         });
 
-        function loadArticle(category, id) {
+        function loadHomeArticle(category, id) {
             const articleData = wikiData[category].find(item => item.id === id);
             if (!articleData) return;
 
             const container = document.getElementById('main-article-box');
             
-            // Genera tabella info se esiste
             let infoboxHTML = '';
             if (articleData.infobox) {
                 infoboxHTML = '<div class="infobox"><table>';
@@ -126,27 +124,6 @@
                     ${infoboxHTML}
                 </div>
             `;
-        }
-
-        function loadCategory(catName) {
-            const container = document.getElementById('main-article-box');
-            const list = wikiData[catName];
-            
-            if (!list || list.length === 0) {
-                container.innerHTML = `<h3 class="article-title pixel-text">${catName}</h3><p>No articles found.</p>`;
-                return;
-            }
-
-            let html = `<h3 class="article-title pixel-text">${catName}</h3><ul class="wiki-list-items">`;
-            list.forEach(item => {
-                html += `<li><a href="#" onclick="loadArticle('${catName}', '${item.id}')">> ${item.title}</a></li>`;
-            });
-            html += `</ul>`;
-            container.innerHTML = html;
-        }
-        
-        function loadAllArticles() {
-             // Placeholder
         }
 
         function updateCounts() {
