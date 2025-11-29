@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CharCrafter - Wiki</title>
+    <!-- Carichiamo prima lo stile base, poi quello specifico della wiki -->
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/wiki-style.css"> 
     <link rel="icon" href="images/simbol.jpg" type="image/jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -32,61 +34,62 @@
         </div>
     </header>
 
-    <main class="wiki-main-container">
+    <!-- Usiamo una classe specifica per "spegnere" il display: flex del main originale -->
+    <main class="wiki-main-block">
         
-        <h1 class="wiki-page-title pixel-text">CharCrafter's WIKI</h1>
+        <h1 class="wiki-main-title pixel-text">CharCrafter's WIKI</h1>
 
-        <div class="wiki-grid-layout">
+        <div class="wiki-layout-grid">
             
-            <!-- COLONNA SINISTRA: Articolo Dinamico -->
-            <section class="latest-article-section">
-                <h2 class="wiki-subtitle pixel-text" id="article-section-title">Latest Wiki Article</h2>
+            <!-- COLONNA SINISTRA (60%): Ultimo Articolo -->
+            <section class="left-column">
+                <h2 class="wiki-section-title pixel-text">Latest Wiki Article</h2>
                 
-                <!-- Il contenuto qui dentro verrà sovrascritto da Javascript -->
-                <div class="featured-article-box" id="main-article-box">
-                    <!-- Placeholder nel caso JS non carichi -->
-                    <p>Caricamento dati...</p> 
+                <div class="article-box" id="main-article-box">
+                    <!-- Contenuto caricato via JS -->
+                    <p>Caricamento...</p> 
                 </div>
             </section>
 
-            <!-- COLONNA DESTRA: Categorie -->
-            <section class="categories-section">
-                <h2 class="wiki-subtitle pixel-text">Wiki Articles</h2>
+            <!-- COLONNA DESTRA (40%): Ricerca e Categorie -->
+            <section class="right-column">
+                <h2 class="wiki-section-title pixel-text">Wiki Articles</h2>
                 
-                <div class="wiki-search-box">
+                <!-- Barra di Ricerca -->
+                <div class="search-container">
                     <input type="text" placeholder="Search article..." class="pixel-text" id="wiki-search">
                 </div>
 
-                <div class="categories-grid">
-                    <!-- I pulsanti chiamano la funzione loadCategory() -->
-                    <div class="cat-card filled" onclick="loadCategory('NPCs')">
-                        <span class="cat-name pixel-text">NPCs</span>
-                        <span class="cat-count" id="count-NPCs">0 articles</span>
+                <!-- Griglia pulsanti (2 colonne interne) -->
+                <div class="buttons-grid">
+                    <div class="wiki-btn filled" onclick="loadCategory('NPCs')">
+                        <span class="btn-text pixel-text">NPCs</span>
+                        <span class="btn-sub" id="count-NPCs">0 articles</span>
                     </div>
 
-                    <div class="cat-card" onclick="loadCategory('Objects')">
-                        <span class="cat-name pixel-text">Objects</span>
-                        <span class="cat-count" id="count-Objects">0 articles</span>
+                    <div class="wiki-btn" onclick="loadCategory('Objects')">
+                        <span class="btn-text pixel-text">Objects</span>
+                        <span class="btn-sub" id="count-Objects">0 articles</span>
                     </div>
 
-                    <div class="cat-card" onclick="loadCategory('Tiles')">
-                        <span class="cat-name pixel-text">Tiles</span>
-                        <span class="cat-count" id="count-Tiles">0 articles</span>
+                    <div class="wiki-btn" onclick="loadCategory('Tiles')">
+                        <span class="btn-text pixel-text">Tiles</span>
+                        <span class="btn-sub" id="count-Tiles">0 articles</span>
                     </div>
 
-                    <div class="cat-card" onclick="loadCategory('Functions')">
-                        <span class="cat-name pixel-text">Functions</span>
-                        <span class="cat-count" id="count-Functions">0 articles</span>
+                    <div class="wiki-btn" onclick="loadCategory('Functions')">
+                        <span class="btn-text pixel-text">Functions</span>
+                        <span class="btn-sub" id="count-Functions">0 articles</span>
                     </div>
 
-                    <div class="cat-card" onclick="loadCategory('Bosses')">
-                        <span class="cat-name pixel-text">Bosses</span>
-                        <span class="cat-count" id="count-Bosses">0 articles</span>
+                    <div class="wiki-btn" onclick="loadCategory('Bosses')">
+                        <span class="btn-text pixel-text">Bosses</span>
+                        <span class="btn-sub" id="count-Bosses">0 articles</span>
                     </div>
 
-                    <div class="cat-card" onclick="loadAllArticles()">
-                        <span class="cat-name pixel-text">ALL</span>
-                        <span class="cat-count" id="count-Total">0 articles</span>
+                    <div class="wiki-btn" onclick="loadAllArticles()">
+                        <span class="btn-text pixel-text">ALL</span>
+                        <span class="btn-sub" id="count-Total">0 articles</span>
                     </div>
                 </div>
             </section>
@@ -94,91 +97,70 @@
         </div>
     </main>
 
-    <!-- Importiamo i Dati e la Logica -->
     <script src="js/wiki-data.js"></script>
     <script>
-        // --- LOGICA WIKI ---
-
-        // 1. All'avvio, carica l'articolo "CharCrafter" e conta gli articoli
         document.addEventListener('DOMContentLoaded', () => {
             loadArticle('General', 'charcrafter');
             updateCounts();
         });
 
-        // Funzione per caricare un articolo specifico
         function loadArticle(category, id) {
             const articleData = wikiData[category].find(item => item.id === id);
             if (!articleData) return;
 
             const container = document.getElementById('main-article-box');
             
-            // Creiamo l'HTML per l'infobox se esiste
+            // Genera tabella info se esiste
             let infoboxHTML = '';
             if (articleData.infobox) {
-                infoboxHTML = '<div class="wiki-infobox"><h4 class="pixel-text">Info</h4><table>';
+                infoboxHTML = '<div class="infobox"><table>';
                 for (const [key, value] of Object.entries(articleData.infobox)) {
-                    infoboxHTML += `<tr><td>${key}</td><td>${value}</td></tr>`;
+                    infoboxHTML += `<tr><td class="info-label">${key}</td><td class="info-val">${value}</td></tr>`;
                 }
                 infoboxHTML += '</table></div>';
             }
 
-            // Iniettiamo il contenuto
             container.innerHTML = `
-                <div class="article-header">
-                    <h3 class="pixel-text big-title">${articleData.title}</h3>
-                </div>
-                <div class="article-body-container">
+                <h3 class="article-title pixel-text">${articleData.title}</h3>
+                <div class="article-body">
+                    <div class="text-part">${articleData.content}</div>
                     ${infoboxHTML}
-                    <div class="article-content">
-                        ${articleData.content}
-                    </div>
                 </div>
             `;
-            
-            document.getElementById('article-section-title').innerText = "Reading: " + articleData.title;
         }
 
-        // Funzione Placeholder per i pulsanti categoria
         function loadCategory(catName) {
             const container = document.getElementById('main-article-box');
             const list = wikiData[catName];
             
             if (!list || list.length === 0) {
-                container.innerHTML = `<h3 class="pixel-text big-title">${catName}</h3><p>Nessun articolo trovato in questa categoria.</p>`;
+                container.innerHTML = `<h3 class="article-title pixel-text">${catName}</h3><p>No articles found.</p>`;
                 return;
             }
 
-            // Genera una lista di link
-            let listHTML = `<h3 class="pixel-text big-title">Category: ${catName}</h3><ul class="wiki-list">`;
+            let html = `<h3 class="article-title pixel-text">${catName}</h3><ul class="wiki-list-items">`;
             list.forEach(item => {
-                // Usiamo un trucco onclick per caricare l'articolo
-                listHTML += `<li><a href="#" onclick="loadArticle('${catName}', '${item.id}')" class="wiki-link">${item.title}</a> - ${item.description}</li>`;
+                html += `<li><a href="#" onclick="loadArticle('${catName}', '${item.id}')">> ${item.title}</a></li>`;
             });
-            listHTML += `</ul>`;
-
-            container.innerHTML = listHTML;
-            document.getElementById('article-section-title').innerText = "Category Selection";
+            html += `</ul>`;
+            container.innerHTML = html;
         }
-
+        
         function loadAllArticles() {
-             // Logica simile a loadCategory ma per tutto
-             alert("Funzionalità 'Mostra Tutto' in arrivo!"); 
+             // Placeholder
         }
 
-        // Aggiorna i numerini "99 articles" nei bottoni
         function updateCounts() {
             let total = 0;
             for (const [key, value] of Object.entries(wikiData)) {
                 const count = value.length;
                 const badge = document.getElementById(`count-${key}`);
                 if (badge) badge.innerText = `${count} articles`;
-                if(key !== "General") total += count; // Escludiamo General dal totale se vogliamo solo gli item di gioco
+                if(key !== "General") total += count;
             }
-            // Aggiungiamo General al totale o no? Facciamo di sì
             total += wikiData["General"].length;
             document.getElementById('count-Total').innerText = `${total} articles`;
         }
     </script>
-
 </body>
 </html>
