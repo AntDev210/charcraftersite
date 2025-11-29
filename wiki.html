@@ -91,23 +91,26 @@
         </div>
     </main>
 
+    <script src="js/categories/general/charcrafter.js"></script>
+
+    <script src="js/categories/npcs/villager.js"></script>
+
     <script src="js/wiki-data.js"></script>
+    
     <script>
-        // Script specifico per la HOME della Wiki
+        // ... (Il codice di loadArticle, loadCategory, updateCounts rimane invariato e funziona!) ...
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Carica l'articolo principale "CharCrafter"
-            loadHomeArticle('General', 'charcrafter'); 
-            
-            // 2. Aggiorna i contatori nei pulsanti
+            loadArticle('General', 'charcrafter');
             updateCounts();
         });
 
-        function loadHomeArticle(category, id) {
+        function loadArticle(category, id) {
             const articleData = wikiData[category].find(item => item.id === id);
             if (!articleData) return;
 
             const container = document.getElementById('main-article-box');
             
+            // Genera tabella info se esiste
             let infoboxHTML = '';
             if (articleData.infobox) {
                 infoboxHTML = '<div class="infobox"><table>';
@@ -126,16 +129,38 @@
             `;
         }
 
+        function loadCategory(catName) {
+            const container = document.getElementById('main-article-box');
+            const list = wikiData[catName];
+            
+            if (!list || list.length === 0) {
+                container.innerHTML = `<h3 class="article-title pixel-text">${catName}</h3><p>No articles found.</p>`;
+                return;
+            }
+
+            let html = `<h3 class="article-title pixel-text">${catName}</h3><ul class="wiki-list-items">`;
+            list.forEach(item => {
+                html += `<li><a href="#" onclick="loadArticle('${catName}', '${item.id}')">> ${item.title}</a></li>`;
+            });
+            html += `</ul>`;
+            container.innerHTML = html;
+        }
+        
+        function loadAllArticles() {
+             const container = document.getElementById('main-article-box');
+             container.innerHTML = `<h3 class="article-title pixel-text">All Articles</h3><p>Select a category to view specific articles.</p>`;
+        }
+
         function updateCounts() {
             let total = 0;
             for (const [key, value] of Object.entries(wikiData)) {
                 const count = value.length;
                 const badge = document.getElementById(`count-${key}`);
                 if (badge) badge.innerText = `${count} articles`;
-                if(key !== "General") total += count;
+                total += count;
             }
-            total += wikiData["General"].length;
-            document.getElementById('count-Total').innerText = `${total} articles`;
+            const totalBadge = document.getElementById('count-Total');
+            if(totalBadge) totalBadge.innerText = `${total} articles`;
         }
     </script>
 </body>
