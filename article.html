@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="article-page-title">Caricamento Articolo...</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/wiki-style.css"> 
+    <link rel="icon" href="images/simbol.jpg" type="image/jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/simbol.jpg" alt="Logo simboli" class="logo-image">
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="wiki.html">Wiki</a></li>
+                <li><a href="https://www.reddit.com/r/CharCrafter/s/GuT2AtGCVy" target="_blank">Subreddit</a></li>
+                <li><a href="announce.html">Announcements</a></li>
+                <li><a href="https://github.com/AntDev210/charcraftergame">Download</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="https://www.buymeacoffee.com/AQUILtheeagle"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=AQUILtheeagle&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
+        </div>
+    </header>
+
+    <main class="wiki-main-block">
+        
+        <div class="wiki-container">
+            
+            <aside class="wiki-sidebar">
+                <h3 class="pixel-text">Wiki Navigation</h3>
+                <ul class="wiki-nav">
+                    <li><a href="wiki.html">← Back to Categories</a></li>
+                    <li class="retro-divider"></li>
+                    <li><a href="article.html?cat=General&id=charcrafter">CharCrafter (Default)</a></li>
+                </ul>
+            </aside>
+
+            <section class="wiki-content" id="article-content">
+                <h1 class="pixel-text">Loading...</h1>
+                <p>Retrieving article data...</p>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/categories/general/charcrafter.js"></script>
+    <script src="js/categories/npcs/villager.js"></script>
+    <script src="js/wiki-data.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            loadArticleFromURL();
+        });
+        
+        function loadArticleFromURL() {
+            // 1. Ottiene i parametri URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const category = urlParams.get('cat');
+            const id = urlParams.get('id');
+            
+            const container = document.getElementById('article-content');
+
+            if (!category || !id || !wikiData[category]) {
+                container.innerHTML = `<h1 class="pixel-text" style="color: red;">ERROR 404</h1><p>Article or Category not found. Please return to the <a href="wiki.html">Wiki Index</a>.</p>`;
+                return;
+            }
+
+            // 2. Trova l'articolo
+            const articleData = wikiData[category].find(item => item.id === id);
+
+            if (!articleData) {
+                container.innerHTML = `<h1 class="pixel-text" style="color: red;">ERROR 404</h1><p>Article ID "${id}" not found in category "${category}".</p>`;
+                return;
+            }
+
+            // 3. Imposta il titolo della pagina
+            document.getElementById('article-page-title').innerText = articleData.title + ' - Wiki';
+
+            // 4. Genera l'Infobox
+            let infoboxHTML = '';
+            if (articleData.infobox) {
+                infoboxHTML = '<div class="infobox"><table>';
+                for (const [key, value] of Object.entries(articleData.infobox)) {
+                    infoboxHTML += `<tr><td class="info-label">${key}</td><td class="info-val">${value}</td></tr>`;
+                }
+                infoboxHTML += '</table></div>';
+            }
+
+            // 5. Inserisce il contenuto
+            container.innerHTML = `
+                <h1 class="article-title pixel-text">${articleData.title}</h1>
+                <div class="article-body">
+                    <div class="text-part">${articleData.content}</div>
+                    ${infoboxHTML}
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
