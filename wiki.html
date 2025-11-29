@@ -40,10 +40,10 @@
         <div class="wiki-layout-grid">
             
             <section class="left-column">
-                <h2 class="wiki-section-title pixel-text" id="category-index-title">Select a Category</h2>
+                <h2 class="wiki-section-title pixel-text" id="category-index-title">Latest Article Preview</h2>
                 
                 <div class="article-box" id="main-article-box">
-                    <p>Click on one of the categories on the right to view the available articles, or access the main <a href="article.html?cat=General&id=charcrafter">CharCrafter</a> page.</p> 
+                    <p>Loading latest article...</p> 
                 </div>
             </section>
 
@@ -77,59 +77,4 @@
 
                     <div class="wiki-btn" onclick="loadCategory('Bosses')">
                         <span class="btn-text pixel-text">Bosses</span>
-                        <span class="btn-sub" id="count-Bosses">0 articles</span>
-                    </div>
-
-                    <div class="wiki-btn" onclick="loadCategory('General')">
-                        <span class="btn-text pixel-text">General</span>
-                        <span class="btn-sub" id="count-General">0 articles</span>
-                    </div>
-                </div>
-            </section>
-
-        </div>
-    </main>
-
-    <script src="js/categories/general/charcrafter.js"></script>
-    <script src="js/categories/npcs/villager.js"></script>
-    <script src="js/wiki-data.js"></script>
-    
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            updateCounts();
-        });
-
-        function loadCategory(catName) {
-            const container = document.getElementById('main-article-box');
-            const title = document.getElementById('category-index-title');
-            const list = wikiData[catName];
-            
-            title.innerText = catName + ' Articles';
-
-            if (!list || list.length === 0) {
-                container.innerHTML = `<p>No articles found in the ${catName} category.</p>`;
-                return;
-            }
-
-            let html = `<ul class="wiki-list-items">`;
-            list.forEach(item => {
-                // *** NUOVA FUNZIONALITÀ: Link alla pagina article.html ***
-                html += `<li><a href="article.html?cat=${catName}&id=${item.id}"> > ${item.title}</a></li>`;
-            });
-            html += `</ul>`;
-            container.innerHTML = html;
-        }
-        
-        function updateCounts() {
-            let total = 0;
-            for (const [key, value] of Object.entries(wikiData)) {
-                const count = value.length;
-                const badge = document.getElementById(`count-${key}`);
-                if (badge) badge.innerText = `${count} articles`;
-                total += count; 
-            }
-            // Non visualizziamo il totale, ma manteniamo la variabile per eventuali futuri usi.
-        }
-    </script>
-</body>
-</html>
+                        <span class="btn-sub" id="count-Bosses
