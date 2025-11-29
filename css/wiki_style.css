@@ -1,0 +1,174 @@
+/* Questo file sovrascrive le regole generali di style.css 
+   per creare il layout specifico della Wiki.
+*/
+
+/* 1. CORREZIONE IMPORTANTE: Resetta il display del main */
+main.wiki-main-block {
+    display: block !important; /* Sovrascrive il 'display: flex' di style.css */
+    padding: 2rem 4rem;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+/* Titolo principale in alto */
+.wiki-main-title {
+    color: #00ff00;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #000;
+}
+
+/* Griglia Principale: Colonna Sinistra (Grande) - Colonna Destra (Piccola) */
+.wiki-layout-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr; /* Rapporto 60% - 40% circa */
+    gap: 3rem;
+    align-items: start;
+}
+
+/* Titoli delle sezioni (Latest Wiki Article / Wiki Articles) */
+.wiki-section-title {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+
+/* --- COLONNA SINISTRA: Articolo --- */
+.article-box {
+    border: 4px solid #00ff00;
+    background-color: #000;
+    padding: 2rem;
+    min-height: 500px;
+    position: relative;
+}
+
+.article-title {
+    font-size: 3rem;
+    color: #00ff00;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+}
+
+.article-body {
+    display: flex;
+    gap: 20px;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.text-part {
+    flex: 1;
+    line-height: 1.4;
+}
+
+.text-part p {
+    margin-bottom: 1rem;
+}
+
+/* Tabella Infobox laterale (dentro l'articolo) */
+.infobox {
+    flex: 0 0 200px;
+    border-left: 1px dashed #333;
+    padding-left: 15px;
+    font-size: 0.9rem;
+}
+.infobox table { width: 100%; border-collapse: collapse; }
+.infobox td { padding: 5px 0; border-bottom: 1px solid #222; vertical-align: top; }
+.info-label { color: #888; padding-right: 10px; }
+.info-val { color: #00ff00; text-align: right; }
+
+/* --- COLONNA DESTRA: Navigazione --- */
+
+/* Barra di Ricerca */
+.search-container {
+    border: 4px solid #00ff00;
+    padding: 10px;
+    margin-bottom: 2rem;
+    background-color: #000;
+}
+
+.search-container input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-family: 'Press Start 2P', cursive; /* Font pixel per l'input */
+    font-size: 0.8rem;
+    outline: none;
+    text-transform: uppercase;
+}
+
+/* Griglia Bottoni Categorie */
+.buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonne uguali */
+    gap: 1.5rem;
+}
+
+.wiki-btn {
+    border: 4px solid #00ff00;
+    background-color: #000;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+    min-height: 110px;
+}
+
+.wiki-btn .btn-text {
+    color: #00ff00;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.wiki-btn .btn-sub {
+    font-family: 'VT323', monospace;
+    color: #00ff00;
+    font-size: 0.9rem;
+}
+
+/* Stile "Filled" (Pieno) - Esempio: NPCs */
+.wiki-btn.filled {
+    background-color: #00ff00;
+}
+.wiki-btn.filled .btn-text,
+.wiki-btn.filled .btn-sub {
+    color: #000;
+}
+
+/* Hover Effects */
+.wiki-btn:hover {
+    background-color: #00ff00;
+    transform: translateY(-2px);
+}
+.wiki-btn:hover .btn-text,
+.wiki-btn:hover .btn-sub {
+    color: #000;
+}
+
+/* Responsive per Mobile */
+@media (max-width: 900px) {
+    .wiki-layout-grid {
+        grid-template-columns: 1fr; /* Una colonna singola su mobile */
+    }
+    .article-body {
+        flex-direction: column;
+    }
+    .infobox {
+        border-left: none;
+        border-top: 1px dashed #333;
+        padding-left: 0;
+        padding-top: 15px;
+    }
+    main.wiki-main-block {
+        padding: 1rem;
+    }
+}
