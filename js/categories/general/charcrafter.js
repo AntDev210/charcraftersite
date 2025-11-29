@@ -8,14 +8,14 @@ const article_CharCrafter = {
         <p>The CharCrafter project originated with an initial attempt in late 2023, a version that the author defines as "simple and uncontinued" and more oriented towards the RPG genre. The current version, considered definitive, has been entirely recreated and developed since early July 2025. The goal of this second phase of development was to create a more extensive gaming experience focused on the sandbox genre.</p> 
         <p>The developer has clarified that the design and implementations are original and do not draw direct inspiration from similar titles like Terraria or Minecraft, with the implementations being based on ideas created by him and his friends.</p>
         <p>CharCrafter combines elements of survival and progression in an explorable environment. The title derives from the nature of the game, which is based on alphanumeric "characters" (Char) and the ability for the player to "create" (Crafter) their own story.</p>
-        <h4 class="pixel-text" style="color: #00ff00; margin-top: 20px;">TECNOLOGY</h4>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">TECNOLOGY</h5>
         <p>The game is developed entirely in Python.</p>
         <p>Interaction is limited to the keyboard, as the use of controllers is made impractical by the text-based nature of the interface.</p>
-        <h4 class="pixel-text" style="color: #00ff00; margin-top: 20px;">TECHNICAL ASSISTANCE</h4>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">TECHNICAL ASSISTANCE</h5>
         <p>AQUIL the eagle worked on the project independently, using Artificial Intelligence exclusively to understand specific Python features, and not for generating code or game content.</p>
-        <h4 class="pixel-text" style="color: #00ff00; margin-top: 20px;">PROJECT STATUS</h4>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">PROJECT STATUS</h5>
         <p>The game is still currently on AlpDev. The official release date is still a long way off, with a release date expected in 2027, as the developer wants to add "many features" before the OFFICIAL RELEASE.</p>
-        <h4 class="pixel-text" style="color: #00ff00; margin-top: 20px;">SIZE</h4>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">SIZE</h5>
         <p>The game file is estimated to be only 2 MB in size, making it accessible even on hardware with limited memory.</p>
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">KEY BINDINGS</h3>
@@ -39,11 +39,11 @@ const article_CharCrafter = {
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">DISTRIBUTION</h3>
         <p>the official launch is scheduled for 2027.</p>
-        <h4 class="pixel-text" style="color: #00ff00; margin-top: 20px;">PLATFORMS</h4>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">PLATFORMS</h5>
         <p>CharCrafter will be available for Windows, macOS, and GNU/Linux operating systems.</p>
-        <h4 class="pixel-text" style="color: #00ff00; margin-top: 20px;">DOWNLOAD SOURCE</h4>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">DOWNLOAD SOURCE</h5>
         <p>By personal choice of the author, the game will be distributed exclusively via GitHub.</p>
-        <h4 class="pixel-text" style="color: #00ff00; margin-top: 20px;">LICENSES</h4>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">LICENSES</h5>
         <p>The project is not licensed, and the source code will not be made public (except after the creator's death).</p>
         <p>However, mods and resource packs are planned for the community.</p>
         
