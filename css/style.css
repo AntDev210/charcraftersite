@@ -55,107 +55,6 @@ header {
     align-items: center;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-
-/* Container Generale */
-.pixel-bmc-container {
-    display: inline-flex;
-    align-items: center; /* Allinea pulsante e contatore */
-    gap: 0; /* Nessuno spazio, devono sembrare uniti */
-    font-family: 'VT323', monospace;
-    position: relative;
-    z-index: 10;
-}
-
-/* Stile del Pulsante Giallo */
-.pixel-btn {
-    background-color: #FFDD00;
-    color: #000;
-    text-decoration: none;
-    font-size: 24px;
-    padding: 10px 15px;
-    border: 2px solid #000;
-    border-right: none; /* Rimuove il bordo destro per unirlo al contatore */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-    position: relative;
-    box-shadow: 0 4px 0 #000; /* Ombra solida pixel */
-    transition: transform 0.1s;
-}
-
-/* Icona caffè */
-.pixel-btn .icon {
-    font-size: 28px;
-}
-
-/* Stile del Contatore (Parte bianca/grigia a destra) */
-.pixel-counter {
-    background-color: #ffffff;
-    color: #000;
-    text-decoration: none;
-    font-size: 24px;
-    padding: 10px 15px;
-    border: 2px solid #000;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    box-shadow: 4px 4px 0 #000; /* L'ombra segue il blocco intero */
-    transition: transform 0.1s;
-}
-
-.pixel-counter .heart-icon {
-    color: #ff4757;
-}
-
-/* Effetto Hover su tutto il blocco */
-.pixel-bmc-container:hover .pixel-btn,
-.pixel-bmc-container:hover .pixel-counter {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 0 #000; /* L'ombra si allunga */
-}
-
-/* Effetto Click */
-.pixel-btn:active, .pixel-counter:active {
-    transform: translateY(2px);
-    box-shadow: 0 2px 0 #000;
-}
-
-/* --- ANIMAZIONE CUORI VOLANTI --- */
-#hearts-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Permette di cliccare attraverso i cuori */
-    z-index: 9999;
-    overflow: hidden;
-}
-
-.floating-heart {
-    position: absolute;
-    font-size: 24px;
-    user-select: none;
-    animation: floatUp 1.5s ease-out forwards;
-}
-
-/* Animazione che porta il cuore verso l'alto e lo fa svanire */
-@keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(1) rotate(0deg);
-        opacity: 1;
-    }
-    50% {
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-100px) scale(1.5) rotate(20deg);
-        opacity: 0;
-    }
-}
-
 main {
     display: flex;
     padding: 2.5rem;
@@ -284,6 +183,7 @@ h2.subtitle {
         width: 100%;
     }
 }
+
 
 
 
