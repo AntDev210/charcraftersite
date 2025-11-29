@@ -34,8 +34,9 @@
 
     <!-- Usiamo una classe specifica per "spegnere" il display: flex del main originale -->
     <main class="wiki-main-block">
-        
-        <h1 class="wiki-main-title pixel-text">CharCrafter's WIKI</h1>
+        <header>
+            <h1 class="wiki-main-title pixel-text">CharCrafter's WIKI</h1>
+        </header>
 
         <div class="wiki-layout-grid">
             
@@ -45,12 +46,12 @@
                 
                 <div class="article-box" id="main-article-box">
                     <!-- Contenuto caricato via JS -->
-                    <p>Caricamento...</p> 
+                    <p>loading...</p> 
                 </div>
             </section>
 
             <!-- COLONNA DESTRA (40%): Ricerca e Categorie -->
-            <section class="right-column">
+            <aside class="right-column">
                 <h2 class="wiki-section-title pixel-text">Wiki Articles</h2>
                 
                 <!-- Barra di Ricerca -->
@@ -90,7 +91,7 @@
                         <span class="btn-sub" id="count-Total">0 articles</span>
                     </div>
                 </div>
-            </section>
+            </aside>
 
         </div>
     </main>
