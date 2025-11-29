@@ -295,3 +295,104 @@ h2.subtitle {
         position: relative; /* Rimuove lo sticky su mobile */
     }
 }
+/* Contenitore flessibile per testo + infobox */
+.article-body-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap; /* Su mobile va a capo */
+}
+
+/* Stile dell'Infobox (Tabella laterale) */
+.wiki-infobox {
+    background-color: #111;
+    border: 2px solid #00ff00;
+    padding: 10px;
+    min-width: 250px;
+    flex: 0 0 auto; /* Non si restringe */
+    order: 2; /* Su desktop sta a destra */
+    margin-left: auto; /* Spinge a destra */
+}
+
+.wiki-infobox h4 {
+    color: #ffcc00;
+    text-align: center;
+    border-bottom: 1px dashed #333;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+.wiki-infobox table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #fff;
+    font-family: 'VT323', monospace;
+    font-size: 1.1rem;
+}
+
+.wiki-infobox td {
+    padding: 4px;
+    border-bottom: 1px solid #333;
+}
+
+.wiki-infobox td:first-child {
+    font-weight: bold;
+    color: #00ff00; /* Etichetta verde */
+}
+
+/* Contenuto testuale principale */
+.article-content {
+    flex: 1; /* Prende lo spazio rimanente */
+    order: 1;
+}
+
+/* Stile Liste Comandi */
+.wiki-list {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.wiki-list li {
+    margin-bottom: 8px;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+}
+
+/* Stile "Tasto della tastiera" */
+.key {
+    display: inline-block;
+    background-color: #333;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    padding: 0 6px;
+    color: #fff;
+    font-family: monospace;
+    font-weight: bold;
+    box-shadow: 2px 2px 0 #000;
+    margin-right: 5px;
+}
+
+/* Link agli articoli nella lista categorie */
+.wiki-link {
+    color: #00ff00;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.wiki-link:hover {
+    color: #fff;
+    background-color: #00ff00;
+    color: #000;
+    text-decoration: none;
+}
+
+/* Mobile responsive per l'articolo */
+@media (max-width: 800px) {
+    .article-body-container {
+        flex-direction: column;
+    }
+    .wiki-infobox {
+        width: 100%;
+        order: -1; /* Su mobile metti l'infobox SOPRA il testo, o togli per mettere sotto */
+        margin-bottom: 20px;
+    }
+}
