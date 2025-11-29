@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CharCrafter - Category</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/wiki-style.css"> 
+    <link rel="icon" href="images/simbol.jpg" type="image/jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="images/simbol.jpg" alt="Logo simboli" class="logo-image">
+            </a>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="active"><a href="wiki.html">Wiki</a></li>
+                <li><a href="https://www.reddit.com/r/CharCrafter/s/GuT2AtGCVy" target="_blank">Subreddit</a></li>
+                <li><a href="announce.html">Announcements</a></li>
+                <li><a href="https://github.com/AntDev210/charcraftergame">Download</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <a href="https://www.buymeacoffee.com/AQUILtheeagle"><img src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=☕&slug=AQUILtheeagle&button_colour=FFDD00&font_colour=000000&font_family=Poppins&outline_colour=000000&coffee_colour=ffffff" /></a>
+        </div>
+    </header>
+
+    <main class="wiki-main-block">
+        
+        <div style="margin-bottom: 20px;">
+            <a href="wiki.html" class="back-link">&lt; Back to Wiki Index</a>
+        </div>
+
+        <h1 class="wiki-main-title pixel-text" id="category-title" style="text-align: left;">Loading...</h1>
+
+        <div class="article-box full-width">
+            <div id="category-content-list">
+                <!-- Qui appariranno gli articoli -->
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/wiki-data.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const category = params.get('cat');
+
+            if (!category) {
+                document.getElementById('category-title').innerText = "Category Not Found";
+                return;
+            }
+
+            // Gestione "ALL" o categoria singola
+            let items = [];
+            if (category === "ALL") {
+                 document.getElementById('category-title').innerText = "All Articles";
+                 // Unisce tutte le categorie tranne "General" (opzionale)
+                 for (const [key, value] of Object.entries(wikiData)) {
+                     if(key !== "General") items = items.concat(value);
+                 }
+            } else {
+                 document.getElementById('category-title').innerText = "Folder: " + category;
+                 items = wikiData[category] || [];
+            }
+
+            const container = document.getElementById('category-content-list');
+
+            if (items.length === 0) {
+                container.innerHTML = "<p style='font-family: VT323; font-size: 1.5rem;'>Questa cartella è vuota.</p>";
+                return;
+            }
+
+            let html = "";
+            items.forEach(item => {
+                let infoboxHTML = "";
+                if (item.infobox) {
+                    infoboxHTML = "<div class='mini-infobox'>";
+                    for (const [k, v] of Object.entries(item.infobox)) {
+                        infoboxHTML += `<span><span style='color:#888'>${k}:</span> <span style='color:#00ff00'>${v}</span></span>`;
+                    }
+                    infoboxHTML += "</div>";
+                }
+
+                html += `
+                    <div class="list-item-entry">
+                        <h2 class="pixel-text list-item-title">${item.title}</h2>
+                        <div class="list-item-content">
+                            ${item.content}
+                        </div>
+                        ${infoboxHTML}
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        });
+    </script>
+</body>
+</html>
