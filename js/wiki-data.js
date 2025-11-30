@@ -11,7 +11,6 @@ const wikiData = {
         // ESEMPIO: (typeof article_Guide !== 'undefined') ? article_Guide : null
     ]),
     "NPCs": filterNull([
-        (typeof article_Villager !== 'undefined') ? article_Villager : null
         // Per aggiungere altri articoli 'NPCs' (es. article_Merchant), aggiungi qui
         // ESEMPIO: (typeof article_Merchant !== 'undefined') ? article_Merchant : null
     ]),
@@ -19,8 +18,7 @@ const wikiData = {
     // ⬇️ LE TUE CATEGORIE VUOTE DEVONO ESSERE MODIFICATE COSÌ: ⬇️
     
     "Objects": filterNull([
-        // DEVI AGGIUNGERE LA TUA VARIABILE QUI
-        // ESEMPIO: (typeof article_Sword !== 'undefined') ? article_Sword : null,
+        (typeof article_Wool !== 'undefined') ? article_Wool : null
         // ESEMPIO: (typeof article_Pickaxe !== 'undefined') ? article_Pickaxe : null
     ]),
     
