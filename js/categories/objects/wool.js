@@ -21,6 +21,7 @@ const article_Wool = {
 	`,
     infobox: {
         "Object Name": "Wool",
+        "Added In": "AlpDev 1.X",
         "Primary Origin Animal(s)": "Sheep",
         "Item Category": "Animal/Base Resource",
         "Loot Amount": "4 units of Wool per Sheep defeat",
