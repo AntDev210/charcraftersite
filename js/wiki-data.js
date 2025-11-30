@@ -7,16 +7,34 @@ const filterNull = (arr) => arr.filter(item => item !== null);
 const wikiData = {
     "General": filterNull([
         (typeof article_CharCrafter !== 'undefined') ? article_CharCrafter : null
-        // Aggiungi qui gli altri articoli 'General'
+        // Per aggiungere altri articoli 'General' (es. article_Guide), dovrai aggiungere una riga qui
+        // ESEMPIO: (typeof article_Guide !== 'undefined') ? article_Guide : null
     ]),
     "NPCs": filterNull([
         (typeof article_Villager !== 'undefined') ? article_Villager : null
-        // Aggiungi qui gli altri articoli 'NPCs'
+        // Per aggiungere altri articoli 'NPCs' (es. article_Merchant), aggiungi qui
+        // ESEMPIO: (typeof article_Merchant !== 'undefined') ? article_Merchant : null
     ]),
     
-    // Le categorie senza articoli caricati restano array vuoti
-    "Objects": [],
-    "Tiles": [],
-    "Functions": [],
-    "Bosses": []
+    // ⬇️ LE TUE CATEGORIE VUOTE DEVONO ESSERE MODIFICATE COSÌ: ⬇️
+    
+    "Objects": filterNull([
+        // DEVI AGGIUNGERE LA TUA VARIABILE QUI
+        // ESEMPIO: (typeof article_Sword !== 'undefined') ? article_Sword : null,
+        // ESEMPIO: (typeof article_Pickaxe !== 'undefined') ? article_Pickaxe : null
+    ]),
+    
+    "Tiles": filterNull([
+        // DEVI AGGIUNGERE LA TUA VARIABILE QUI
+        // ESEMPIO: (typeof article_Dirt !== 'undefined') ? article_Dirt : null,
+        // ESEMPIO: (typeof article_Stone !== 'undefined') ? article_Stone : null
+    ]),
+    
+    "Functions": filterNull([
+        // DEVI AGGIUNGERE LA TUA VARIABILE QUI
+    ]),
+    
+    "Bosses": filterNull([
+        // DEVI AGGIUNGERE LA TUA VARIABILE QUI
+    ])
 };
