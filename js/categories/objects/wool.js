@@ -1,4 +1,4 @@
-const article_wool = {
+const article_Wool = {
     id: "wool",
     title: "Wool",
     description: "Wool is an essential primary resource for advanced survival and infrastructural expansion in the game CharCrafter. Although primarily obtained through looting the Sheep, its core value lies in its versatility as a material for creating insulating fabrics and strategic tools.",
