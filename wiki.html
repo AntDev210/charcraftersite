@@ -114,37 +114,68 @@
 
         // NUOVA FUNZIONE: Carica l'anteprima dell'articolo più recente
         function loadLatestArticlePreview() {
-            // Assumiamo che CharCrafter sia l'articolo più recente (General[0])
-            const articleData = wikiData["General"][0]; 
+            let latestArticle = null;
+            let latestDate = new Date(0); // Inizia con la data più vecchia possibile (1970)
+        
+            // Funzione di utilità per convertire la data 'YYYY-MM-DD' in oggetto Date
+            const parseDate = (dateStr) => {
+                if (!dateStr) return new Date(0);
+                // Assumendo il formato YYYY-MM-DD per la facile conversione
+                const parts = dateStr.split('-');
+                if (parts.length === 3) {
+                    // new Date(anno, mese-1, giorno)
+                    return new Date(parts[0], parts[1] - 1, parts[2]);
+                }
+                return new Date(0);
+            };
+        
+            // Itera attraverso tutte le categorie in wikiData
+            for (const categoryName in wikiData) {
+                const categoryList = wikiData[categoryName];
+                
+                // Itera su ogni articolo nella categoria
+                categoryList.forEach(item => {
+                    if (!item.date) return; // Salta gli articoli senza data
+        
+                    const articleDate = parseDate(item.date);
+                    
+                    // Confronta la data dell'articolo corrente con l'ultima data trovata
+                    if (articleDate > latestDate) {
+                        latestDate = articleDate;
+                        latestArticle = item;
+                        latestArticle.category = categoryName; // Memorizza la categoria per il link
+                    }
+                });
+            }
+        
             const container = document.getElementById('main-article-box');
             const titleElement = document.getElementById('category-index-title');
-
-            if (!articleData) {
+        
+            if (!latestArticle) {
                 container.innerHTML = `<p>No recent article data found.</p>`;
                 return;
             }
-
+        
             // 1. Estrae i paragrafi
-            // Usiamo un elemento temporaneo per convertire la stringa HTML in nodi DOM
             const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = articleData.content.trim();
+            tempDiv.innerHTML = latestArticle.content.trim();
             const paragraphs = tempDiv.querySelectorAll('p');
-
+        
             let previewHTML = '';
             const maxLines = 3; 
-
+        
             // 2. Costruisce l'anteprima con i primi 3 paragrafi
             for (let i = 0; i < Math.min(paragraphs.length, maxLines); i++) {
                 previewHTML += paragraphs[i].outerHTML;
             }
-
-            // 3. Inserisce il contenuto
-            titleElement.innerText = 'Latest Article: ' + articleData.title;
+        
+            // 3. Inserisce il contenuto e la data aggiornata
+            titleElement.innerText = `Latest Article (${latestArticle.date}): ${latestArticle.title}`; 
             
             container.innerHTML = `
                 <h3 class="article-title pixel-text" style="margin-top: 0; color: #00ff00;">
-                    <a href="article.html?cat=General&id=${articleData.id}" style="text-decoration: none; color: inherit;">
-                        ${articleData.title}
+                    <a href="article.html?cat=${latestArticle.category}&id=${latestArticle.id}" style="text-decoration: none; color: inherit;">
+                        ${latestArticle.title}
                     </a>
                 </h3>
                 <p>---</p>
@@ -152,10 +183,9 @@
                     ${previewHTML}
                 </div>
                 <p style="text-align: right; margin-top: 10px;">
-                    <a href="article.html?cat=General&id=${articleData.id}" class="pixel-text" style="font-size: 1rem; color: #00ff00;">[Read More >>]</a>
+                    <a href="article.html?cat=${latestArticle.category}&id=${latestArticle.id}" class="pixel-text" style="font-size: 1rem; color: #00ff00;">[Read More >>]</a>
                 </p>
             `;
-            // Nota: La classe .article-title usa lo stile che hai definito nel CSS per i link (bianco/verde)
         }
         
         // FUNZIONE INVARIATA: Carica la lista degli articoli di una categoria
