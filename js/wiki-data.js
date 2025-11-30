@@ -18,8 +18,9 @@ const wikiData = {
     // ⬇️ LE TUE CATEGORIE VUOTE DEVONO ESSERE MODIFICATE COSÌ: ⬇️
     
     "Objects": filterNull([
+        // Devi includere la variabile che definisce l'articolo Wool
         (typeof article_Wool !== 'undefined') ? article_Wool : null
-        // ESEMPIO: (typeof article_Pickaxe !== 'undefined') ? article_Pickaxe : null
+        // Se hai altri oggetti, li aggiungeresti qui (es. article_Sword, ecc.)
     ]),
     
     "Tiles": filterNull([
