@@ -1,6 +1,7 @@
 const article_CharCrafter = {
     id: "charcrafter",
     title: "CharCrafter",
+    date: "2025-11-29",
     description: "CharCrafter is an independent 2D sandbox/RPG terminal game currently being developed by the Italian programmer known by the pseudonym 'AQUIL the eagle'. The game is notable for its entirely alphanumeric (ASCII) graphics and its extremely small file size (about 2 MB).",
     content: `
         <p>CharCrafter is an independent 2D sandbox/RPG terminal game currently being developed by the Italian programmer known by the pseudonym 'AQUIL the eagle'. The game is notable for its entirely alphanumeric (ASCII) graphics and its extremely small file size (about 2 MB).</p>
