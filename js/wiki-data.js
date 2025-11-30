@@ -17,7 +17,7 @@ const wikiData = {
     
     "Objects": filterNull([
         // Devi includere la variabile che definisce l'articolo Wool
-        (typeof article_Wool !== 'undefined') ? article_Wool : null
+        (typeof article_Wool !== 'undefined') ? article_Wool : null,
         (typeof article_BallOfWool !== 'undefined') ? article_BallOfWool : null
         // Se hai altri oggetti, li aggiungeresti qui (es. article_Sword, ecc.)
     ]),
