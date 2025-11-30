@@ -113,21 +113,11 @@
         });
 
         // NUOVA FUNZIONE: Carica l'anteprima dell'articolo più recente
+        // Nel file wiki (1).html, sostituisci la funzione esistente:
+
         function loadLatestArticlePreview() {
             let latestArticle = null;
-            let latestDate = new Date(0); // Inizia con la data più vecchia possibile (1970)
-        
-            // Funzione di utilità per convertire la data 'YYYY-MM-DD' in oggetto Date
-            const parseDate = (dateStr) => {
-                if (!dateStr) return new Date(0);
-                // Assumendo il formato YYYY-MM-DD per la facile conversione
-                const parts = dateStr.split('-');
-                if (parts.length === 3) {
-                    // new Date(anno, mese-1, giorno)
-                    return new Date(parts[0], parts[1] - 1, parts[2]);
-                }
-                return new Date(0);
-            };
+            let latestDate = new Date(0); // Inizia con la data più vecchia possibile
         
             // Itera attraverso tutte le categorie in wikiData
             for (const categoryName in wikiData) {
@@ -137,13 +127,17 @@
                 categoryList.forEach(item => {
                     if (!item.date) return; // Salta gli articoli senza data
         
-                    const articleDate = parseDate(item.date);
+                    // JavaScript può leggere il formato "YYYY-MM-DD HH:MM" nativamente
+                    const articleDate = new Date(item.date); 
                     
-                    // Confronta la data dell'articolo corrente con l'ultima data trovata
+                    // Verifica che la data sia valida prima del confronto
+                    if (isNaN(articleDate.getTime())) return; 
+                    
+                    // Confronta la data e l'ora dell'articolo corrente con l'ultima data trovata
                     if (articleDate > latestDate) {
                         latestDate = articleDate;
                         latestArticle = item;
-                        latestArticle.category = categoryName; // Memorizza la categoria per il link
+                        latestArticle.category = categoryName; // Memorizza la categoria
                     }
                 });
             }
@@ -155,6 +149,15 @@
                 container.innerHTML = `<p>No recent article data found.</p>`;
                 return;
             }
+        
+            // Funzione per formattare la data in "DD/MM/YYYY HH:MM" (formato italiano)
+            const formattedDate = latestDate.toLocaleDateString('it-IT', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            }).replace(',', ''); // Rimuove la virgola che a volte segue la data
         
             // 1. Estrae i paragrafi
             const tempDiv = document.createElement('div');
@@ -169,8 +172,8 @@
                 previewHTML += paragraphs[i].outerHTML;
             }
         
-            // 3. Inserisce il contenuto e la data aggiornata
-            titleElement.innerText = `Latest Article (${latestArticle.date}): ${latestArticle.title}`; 
+            // 3. Inserisce il contenuto, ora con data e ora
+            titleElement.innerText = `Latest Article (${formattedDate}): ${latestArticle.title}`; 
             
             container.innerHTML = `
                 <h3 class="article-title pixel-text" style="margin-top: 0; color: #00ff00;">
