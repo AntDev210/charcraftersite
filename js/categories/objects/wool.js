@@ -4,7 +4,7 @@ const article_Wool = {
 	date: "2025-11-30 14:40",
     description: "Wool is an essential primary resource for advanced survival and infrastructural expansion in the game CharCrafter. Although primarily obtained through looting the Sheep, its core value lies in its versatility as a material for creating insulating fabrics and strategic tools.",
     content: `
-        <p>Wool is an essential primary resource for advanced survival and infrastructural expansion in the game CharCrafter. Although primarily obtained through looting the Sheep, its core value lies in its versatility as a material for creating insulating fabrics and strategic tools.</p>
+        <p>Wool is an essential primary resource for advanced survival and infrastructural expansion in the game CharCrafter. Although primarily obtained through looting the Sheep, its core value lies in its versatility as a material for creating insulating fabrics and strategic tools. It occupies a single slot in the Standard Inventory, which has a maximum capacity of 80 slots.</p>
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">TRANSFORMATION</h3>
         <p>TThe utility of wool is conditional upon its transformation into a Ball of Wool. This intermediate step is essential before accessing most advanced recipes. Note that the Water Filter requires raw Wool (wool: 3), not the Ball of Wool intermediate.</p>
