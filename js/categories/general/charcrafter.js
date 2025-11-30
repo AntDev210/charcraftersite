@@ -58,13 +58,13 @@ const article_CharCrafter = {
         "Name": "CharCrafter",
         "Author(s)": "AQUIL the eagle",
         "Platform(s)": "Windows, MacOS, GNU/Linux",
-        "Written in": "Python",
+        "Written In": "Python",
         "Latest Version": "x",
         "Latest AlpDev": "1.8",
-        "Official release": "xx/xx/xxxx",
-        "First release": "10/08/2025",
+        "Official Release": "xx/xx/xxxx",
+        "First Release": "10/08/2025",
         "Rating(s)": "Unrated",
         "License": "None",
-        "Download source": "GitHub"
+        "Download Source": "GitHub"
     }
 };
