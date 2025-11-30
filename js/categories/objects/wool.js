@@ -19,7 +19,7 @@ const article_wool = {
         </ul>
 	`,
     infobox: {
-        "Objects Name": "Wool",
+        "Object Name": "Wool",
         "Primary Origin Animal(s)": "Sheep",
         "Item Category": "Animal/Base Resource",
         "Loot Amount": "4 units of Wool per Sheep defeat",
