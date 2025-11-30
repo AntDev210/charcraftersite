@@ -59,8 +59,6 @@ const article_BallOfWool = {
         "Value Consumption": "None (Non-Consumable/Non-Tool)",
         "Storage": "Standard Inventory (Max. 80 slots)",
         "Primary Origin Resource": "Wool (raw)",
-        "Item Category": "Utility",
-        "Base Conversion": "4x Wool $\\rightarrow$ 1x Ball of Wool",
-        "Conversion Time": "30000 - 40000 seconds"
+        "Item Category": "Utility"
     }
 };
