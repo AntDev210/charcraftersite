@@ -55,7 +55,7 @@ const article_Copper = {
         "Primary Location": "Cave Level 1 (common) and Cave Level 2 (rare)",
         "Map Symbol": "█ (Red)",
         "Sale Value (Raw)": "15 Coins",
-        "Energy Cost (Pickaxe)": "10 Energy",
+        "Energy Cost (Pickaxe)": "From 5 (Iron Pickaxe) to 15 (Stone pickaxe) of Energy",
         "Crafting Category": "Tools, Armor, Weapons, Utility"
     }
 };
