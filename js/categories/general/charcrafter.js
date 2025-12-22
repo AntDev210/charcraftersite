@@ -2,9 +2,9 @@ const article_CharCrafter = {
     id: "charcrafter",
     title: "CharCrafter",
     date: "2025-11-29 18:50",
-    description: "CharCrafter is an independent 2D sandbox/RPG terminal game currently being developed by the Italian programmer known by the pseudonym 'AQUIL the eagle'. The game is notable for its entirely alphanumeric (ASCII) graphics and its extremely small file size (about 2 MB).",
+    description: "CharCrafter is an independent 2D sandbox/RPG terminal game currently being developed by the Italian programmer known by the pseudonym 'AQUIL the eagle'. The game is notable for its entirely alphanumeric (ASCII) graphics and its extremely small file size (about 15 MB).",
     content: `
-        <p>CharCrafter is an independent 2D sandbox/RPG terminal game currently being developed by the Italian programmer known by the pseudonym 'AQUIL the eagle'. The game is notable for its entirely alphanumeric (ASCII) graphics and its extremely small file size (about 2 MB).</p>
+        <p>CharCrafter is an independent 2D sandbox/RPG terminal game currently being developed by the Italian programmer known by the pseudonym 'AQUIL the eagle'. The game is notable for its entirely alphanumeric (ASCII) graphics and its extremely small file size (about 15 MB).</p>
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">DEVELOPMENT</h3>
         <p>The CharCrafter project originated with an initial attempt in late 2023, a version that the author defines as "simple and uncontinued" and more oriented towards the RPG genre. The current version, considered definitive, has been entirely recreated and developed since early July 2025. The goal of this second phase of development was to create a more extensive gaming experience focused on the sandbox genre.</p> 
@@ -18,7 +18,7 @@ const article_CharCrafter = {
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">PROJECT STATUS</h5>
         <p>The game is still currently on AlpDev. The official release date is still a long way off, with a release date expected in 2027, as the developer wants to add "many features" before the OFFICIAL RELEASE.</p>
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">SIZE</h5>
-        <p>The game file is estimated to be only 2 MB in size, making it accessible even on hardware with limited memory.</p>
+        <p>The game file is estimated to be only 15 MB in size, making it accessible even on hardware with limited memory.</p>
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">KEY BINDINGS</h3>
         <p>The game allows for full customization of key bindings. However, there is a default configuration, which includes:</p>
@@ -60,7 +60,7 @@ const article_CharCrafter = {
         "Platform(s)": "Windows, MacOS, GNU/Linux",
         "Written In": "Python",
         "Latest Version": "x",
-        "Latest AlpDev": "1.8",
+        "Latest AlpDev": "1.9",
         "Official Release": "xx/xx/xxxx",
         "First Release": "10/08/2025",
         "Rating(s)": "Unrated",
