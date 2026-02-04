@@ -46,8 +46,8 @@ const article_CharCrafter = {
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">DOWNLOAD SOURCE</h5>
         <p>By personal choice of the author, the game will be distributed exclusively via GitHub.</p>
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">LICENSES</h5>
-        <p>The project is not licensed, and the source code will not be made public (except after the creator's death).</p>
-        <p>However, mods and resource packs are planned for the community.</p>
+        <p>The project is not licensed and is open source for everyone.</p>
+        <p>However, mods and resource packs are still planned for the community.</p>
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">MULTIPLAYER</h3>
         <p>CharCrafter will initially be released as a single-player game. Multiplayer is planned for the future.</p>
