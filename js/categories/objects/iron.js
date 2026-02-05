@@ -12,7 +12,7 @@ const article_Iron = {
         <p>In the darkness of the underground, iron is not just a material, but a beacon for the explorer's progress:</p>
         
         <ul class="wiki-list">
-            <li><strong>Distinctive Sign:</strong> Deposits are recognized by their intense <strong>Brilliant White</strong> color. The map symbol is initially a solid block (█), which stands out clearly against the rock walls.</li>
+            <li><strong>Distinctive Sign:</strong> Deposits are recognized by their intense BRILLIANT WHIITE color. The map symbol is initially a solid block (█), which stands out clearly against the rock walls.</li>
             <li><strong>Extraction States:</strong> The symbol progressively evolves into semi-empty states (▓, ▒, ∷) as the mineral vein becomes exhausted.</li>
             <li><strong>Geological Distribution:</strong> Iron is mainly found in Cave Level 3 (maximum concentration), while it remains rare in Level 2 and Level 4.</li>
         </ul>
@@ -62,11 +62,14 @@ const article_Iron = {
     `,
     infobox: {
         "Object Name": "Iron",
+        "Added In": "AlpDev 1.6",
+        "Value Consumption": "None (Non-Consumable/Non-Tool)",
+        "Storage": "Standard Inventory (Max. 80 slots)",
         "Type": "Metallic Mineral (Level 2)",
-        "Primary Location": "Cave Level 3 (common), Level 2 & 4 (rare)",
-        "Map Symbol": "█ (White)",
-        "Sale Value (Raw)": "10 Coins",
+        "Item Category": "Mineral/Base Resource",
         "Energy Cost (Pickaxe)": "From 5 (Iron Pickaxe) to 15 (Stone pickaxe) of Energy",
-        "Crafting Category": "Tools, Armor, Components"
+        "Primary Location": "Cave Level 2 (Rare), Level 3 (Common) and Level 4 (Rare)",
+        "Map Symbol": "█ (Brilliant White)",
+        "Sale Value (Raw)": "5 Coins",
     }
 };
