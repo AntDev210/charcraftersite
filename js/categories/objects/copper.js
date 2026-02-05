@@ -31,9 +31,9 @@ const article_Copper = {
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 10px;">METALWORKER (FORGING)</h5>
         <p>The Metalworker transforms raw copper into specialized components or finished blades:</p>
         <ul class="wiki-list">
-            <li><strong>Copper Axe Head:</strong> 12x Copper (+ 14 coins)</li>
-            <li><strong>Copper Pickaxe Head:</strong> 10x Copper (+ 14 coins)</li>
-            <li><strong>Copper Shovel Head:</strong> 5x Copper (+ 14 coins)</li>
+            <li><strong>Copper Axe Head:</strong> 12x Copper (+ 12 coins)</li>
+            <li><strong>Copper Pickaxe Head:</strong> 10x Copper (+ 12 coins)</li>
+            <li><strong>Copper Shovel Head:</strong> 5x Copper (+ 12 coins)</li>
             <li><strong>Copper Sword:</strong> 10x Copper (+ 20 coins)</li>
             <li><strong>Copper Knife:</strong> 2x Copper (+ 10 coins)</li>
         </ul>
@@ -41,9 +41,9 @@ const article_Copper = {
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 10px;">WOODWORKER (ASSEMBLY)</h5>
         <p>The Woodworker handles the final assembly of the tools:</p>
         <ul class="wiki-list">
-            <li><strong>Copper Axe:</strong> 1x Copper Axe Head + 1x Wood (+ 2 coins)</li>
-            <li><strong>Copper Pickaxe:</strong> 1x Copper Pickaxe Head + 1x Wood (+ 2 coins)</li>
-            <li><strong>Copper Shovel:</strong> 1x Copper Shovel Head + 1x Wood (+ 2 coins)</li>
+            <li><strong>Copper Axe:</strong> 1x Copper Axe Head + 1x Wood (+ 4 coins)</li>
+            <li><strong>Copper Pickaxe:</strong> 1x Copper Pickaxe Head + 1x Wood (+ 4 coins)</li>
+            <li><strong>Copper Shovel:</strong> 1x Copper Shovel Head + 1x Wood (+ 4 coins)</li>
         </ul>
 
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 10px;">ARMOR (METALWORKER ONLY)</h5>
