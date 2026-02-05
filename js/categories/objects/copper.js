@@ -14,7 +14,7 @@ const article_Copper = {
         <ul class="wiki-list">
             <li><strong>Distinctive Sign:</strong> Deposits are easily recognized by their characteristic <strong>Orange/Bronze</strong> color. The map symbol starts as a solid block (█).</li>
             <li><strong>Extraction States:</strong> As the vein is depleted, the symbol changes through several stages (▓, ▒, ∷) until the resource is completely exhausted.</li>
-            <li><strong>Geological Distribution:</strong> Copper is most abundant in Cave Level 1 and Level 2, where it serves as the primary mineral. It becomes significantly rarer as you descend into Level 3 and Level 4.</li>
+            <li><strong>Geological Distribution:</strong> Copper is most abundant in Cave Level 1, where it serves as the primary mineral. It becomes significantly rarer as you descend into Level 2.</li>
         </ul>
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">EXTRACTION AND ENERGY COSTS</h3>
@@ -63,7 +63,7 @@ const article_Copper = {
     infobox: {
         "Object Name": "Copper",
         "Type": "Metallic Mineral (Level 1)",
-        "Primary Location": "Cave Level 1 & 2 (common), Level 3 & 4 (rare)",
+        "Primary Location": "Cave Level 1 (common) and Level 2 (rare)",
         "Map Symbol": "█ (Orange/Bronze)",
         "Sale Value (Raw)": "5 Coins",
         "Energy Cost (Pickaxe)": "10 Energy (Copper Pickaxe)",
