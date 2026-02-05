@@ -26,5 +26,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         })
-        .catch(error => console.error('Errore durante il caricamento degli annunci:', error));
+        .catch(error => console.error('Error loading articles:', error));
 });
+
