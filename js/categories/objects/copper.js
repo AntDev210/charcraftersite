@@ -8,7 +8,7 @@ const article_Copper = {
         
         <p>While iron remains the goal for mid-game, copper is essential for early survival. It offers a balanced compromise between resource availability and performance, making it the primary material for those beginning to explore the cave systems.</p>
         
-        <h3 class="pixel-text" style="color: #ff7f27; margin-top: 20px;">LOCATION AND IDENTIFICATION</h3>
+        <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">LOCATION AND IDENTIFICATION</h3>
         <p>Identifying copper is the first skill every miner must master to move beyond the stone age:</p>
         
         <ul class="wiki-list">
@@ -17,7 +17,7 @@ const article_Copper = {
             <li><strong>Geological Distribution:</strong> Copper is most abundant in Cave Level 1 and Level 2, where it serves as the primary mineral. It becomes significantly rarer as you descend into Level 3 and Level 4.</li>
         </ul>
         
-        <h3 class="pixel-text" style="color: #ff7f27; margin-top: 20px;">EXTRACTION AND ENERGY COSTS</h3>
+        <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">EXTRACTION AND ENERGY COSTS</h3>
         <p>Transitioning from a stone pickaxe to a copper one is a turning point for energy management. Copper tools allow the player to perform more actions before needing to rest or eat.</p>
         
         <ul class="wiki-list">
@@ -25,10 +25,10 @@ const article_Copper = {
             <li><strong>Processing Time:</strong> Extraction with a copper pickaxe takes between 43200 and 57600 seconds (approximately 12-16 in-game hours).</li>
         </ul>
         
-        <h3 class="pixel-text" style="color: #ff7f27; margin-top: 20px;">THE ART OF CRAFTING</h3>
+        <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">THE ART OF CRAFTING</h3>
         <p>Similar to iron, copper equipment requires a collaboration between the <strong>Metalworker</strong> and the <strong>Woodworker</strong>.</p>
         
-        <h5 class="pixel-text" style="color: #ff7f27; margin-top: 10px;">METALWORKER (FORGING)</h5>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 10px;">METALWORKER (FORGING)</h5>
         <p>The Metalworker transforms raw copper into specialized components or finished blades:</p>
         <ul class="wiki-list">
             <li><strong>Copper Axe Head:</strong> 12x Copper (+ 14 coins)</li>
@@ -38,7 +38,7 @@ const article_Copper = {
             <li><strong>Copper Knife:</strong> 2x Copper (+ 10 coins)</li>
         </ul>
 
-        <h5 class="pixel-text" style="color: #ff7f27; margin-top: 10px;">WOODWORKER (ASSEMBLY)</h5>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 10px;">WOODWORKER (ASSEMBLY)</h5>
         <p>The Woodworker handles the final assembly of the tools:</p>
         <ul class="wiki-list">
             <li><strong>Copper Axe:</strong> 1x Copper Axe Head + 1x Wood (+ 2 coins)</li>
@@ -46,7 +46,7 @@ const article_Copper = {
             <li><strong>Copper Shovel:</strong> 1x Copper Shovel Head + 1x Wood (+ 2 coins)</li>
         </ul>
 
-        <h5 class="pixel-text" style="color: #ff7f27; margin-top: 10px;">ARMOR (METALWORKER ONLY)</h5>
+        <h5 class="pixel-text" style="color: #00ff00; margin-top: 10px;">ARMOR (METALWORKER ONLY)</h5>
         <p>Copper provides the first layer of metallic defense against cave threats:</p>
         <ul class="wiki-list">
             <li><strong>Light Copper Armor:</strong> 14x Copper (+ 25 coins)</li>
@@ -54,7 +54,7 @@ const article_Copper = {
             <li><strong>Heavy Copper Armor:</strong> 38x Copper (+ 35 coins)</li>
         </ul>
         
-        <h3 class="pixel-text" style="color: #ff7f27; margin-top: 20px;">ECONOMIC VALUE</h3>
+        <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">ECONOMIC VALUE</h3>
         <ul class="wiki-list">
             <li><strong>Sale Value:</strong> Raw copper can be sold for <strong>5 coins</strong> per unit.</li>
             <li><strong>Processing:</strong> Refining "Raw Copper" into "Copper" at the Metalworker is a free service, requiring only the raw material.</li>
