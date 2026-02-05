@@ -46,7 +46,7 @@ const article_CharCrafter = {
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">DOWNLOAD SOURCE</h5>
         <p>By personal choice of the author, the game will be distributed exclusively via GitHub.</p>
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">LICENSES</h5>
-        <p>The project is not licensed and is open source for everyone.</p>
+        <p>The project is not licensed and is open source for everyone. This decision was made after the original files were lost and recovered by decompiling the published .pyz file.</p>
         <p>However, mods and resource packs are still planned for the community.</p>
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">MULTIPLAYER</h3>
