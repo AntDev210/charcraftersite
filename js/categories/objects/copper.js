@@ -49,9 +49,9 @@ const article_Copper = {
         <h5 class="pixel-text" style="color: #00ff00; margin-top: 10px;">ARMOR (METALWORKER ONLY)</h5>
         <p>Copper provides the first layer of metallic defense against cave threats:</p>
         <ul class="wiki-list">
-            <li><strong>Light Copper Armor:</strong> 14x Copper (+ 25 coins)</li>
-            <li><strong>Normal Copper Armor:</strong> 26x Copper (+ 30 coins)</li>
-            <li><strong>Heavy Copper Armor:</strong> 38x Copper (+ 35 coins)</li>
+            <li><strong>Light Copper Armor:</strong> 14x Copper (+ 30 coins)</li>
+            <li><strong>Normal Copper Armor:</strong> 26x Copper (+ 35 coins)</li>
+            <li><strong>Heavy Copper Armor:</strong> 38x Copper (+ 40 coins)</li>
         </ul>
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">ECONOMIC VALUE</h3>
