@@ -2,60 +2,71 @@ const article_Copper = {
     id: "copper",
     title: "Copper",
 	date: "2025-12-01 08:38",
-    description: "Raw Copper is the transitional metallic mineral in the game, marking the shift from primitive stone tools to the more efficient metal implements. This resource is crucial for progression, as Copper equipment offers a noticeable improvement in energy efficiency compared to Stone.",
+    description: "Copper is the Grade 1 metallic mineral that represents the first major step in a survivor's technological progression. It allows for the creation of tools that are significantly more efficient than basic stone implements, reducing physical fatigue.",
     content: `
-        <p>Raw Copper is the transitional metallic mineral in the game, marking the shift from primitive stone tools to the more efficient metal implements. This resource is crucial for progression, as Copper equipment offers a noticeable improvement in energy efficiency compared to Stone.</p>
+        <p>Copper is the Grade 1 metallic mineral that represents the first major step in a survivor's technological progression. It allows for the creation of tools that are significantly more efficient than basic stone implements, reducing physical fatigue.</p>
         
-        <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">LOCATION AND IDENTIFICATION</h3>
-        <p>Copper deposits are predominantly located in Level 1 Cave, serving as the primary mining target for early players, although they are also present in Level 2.</p>
+        <p>While iron remains the goal for mid-game, copper is essential for early survival. It offers a balanced compromise between resource availability and performance, making it the primary material for those beginning to explore the cave systems.</p>
+        
+        <h3 class="pixel-text" style="color: #ff7f27; margin-top: 20px;">LOCATION AND IDENTIFICATION</h3>
+        <p>Identifying copper is the first skill every miner must master to move beyond the stone age:</p>
         
         <ul class="wiki-list">
-            <li>Map Symbol: Deposits are distinguished on the map by the solid block Tile (█) colored Red.</li>
-            <li>States: The symbol progressively evolves into semi-empty states (▓, ▒, ∷) as the mineral vein becomes exhausted, but it always retains its distinctive Red coloring.</li>
+            <li><strong>Distinctive Sign:</strong> Deposits are easily recognized by their characteristic <strong>Orange/Bronze</strong> color. The map symbol starts as a solid block (█).</li>
+            <li><strong>Extraction States:</strong> As the vein is depleted, the symbol changes through several stages (▓, ▒, ∷) until the resource is completely exhausted.</li>
+            <li><strong>Geological Distribution:</strong> Copper is most abundant in Cave Level 1 and Level 2, where it serves as the primary mineral. It becomes significantly rarer as you descend into Level 3 and Level 4.</li>
         </ul>
         
-        <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">EXTRACTION AND ENERGY COSTS</h3>
-        <p>Copper extraction represents the equilibrium point between the high cost of Stone and the efficiency of Iron. Using a Copper Pickaxe incurs an Energy cost of 10 Energy to the character.</p>
+        <h3 class="pixel-text" style="color: #ff7f27; margin-top: 20px;">EXTRACTION AND ENERGY COSTS</h3>
+        <p>Transitioning from a stone pickaxe to a copper one is a turning point for energy management. Copper tools allow the player to perform more actions before needing to rest or eat.</p>
         
         <ul class="wiki-list">
-            <li>Energy Cost (Copper Pickaxe): 10 Energy per use.</li>
-            <li>Processing Time: Extraction requires a time interval between 43200 and 57600 seconds (approximately 12-16 in-game hours).</li>
+            <li><strong>Energy Cost (Copper Pickaxe):</strong> 10 Energy per use (compared to 15 for stone).</li>
+            <li><strong>Processing Time:</strong> Extraction with a copper pickaxe takes between 43200 and 57600 seconds (approximately 12-16 in-game hours).</li>
+        </ul>
+        
+        <h3 class="pixel-text" style="color: #ff7f27; margin-top: 20px;">THE ART OF CRAFTING</h3>
+        <p>Similar to iron, copper equipment requires a collaboration between the <strong>Metalworker</strong> and the <strong>Woodworker</strong>.</p>
+        
+        <h5 class="pixel-text" style="color: #ff7f27; margin-top: 10px;">METALWORKER (FORGING)</h5>
+        <p>The Metalworker transforms raw copper into specialized components or finished blades:</p>
+        <ul class="wiki-list">
+            <li><strong>Copper Axe Head:</strong> 12x Copper (+ 14 coins)</li>
+            <li><strong>Copper Pickaxe Head:</strong> 10x Copper (+ 14 coins)</li>
+            <li><strong>Copper Shovel Head:</strong> 5x Copper (+ 14 coins)</li>
+            <li><strong>Copper Sword:</strong> 10x Copper (+ 20 coins)</li>
+            <li><strong>Copper Knife:</strong> 2x Copper (+ 10 coins)</li>
         </ul>
 
-        <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">METALWORKER CRAFTING AND USAGE</h3>
-        <p>Processed Copper is the base ingredient for Level 2 crafting, primarily performed by the metalworker and almost always requiring a coin fee.</p>
-
-        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">COMPONENTS AND TOOLS</h5>
+        <h5 class="pixel-text" style="color: #ff7f27; margin-top: 10px;">WOODWORKER (ASSEMBLY)</h5>
+        <p>The Woodworker handles the final assembly of the tools:</p>
         <ul class="wiki-list">
-            <li>Tool Heads: Require from 5 units (shovel) to 12 units (axe) of Copper. The woodworker then combines the head with 1 unit of wood and a 4 coin fee.</li>
-            <li>Knitting Needles:4 units are needed for Copper Knitting Needles.</li>
-            <li>Armaments and Defense: Copper Swords (10 units), Knives (2 units), and Shields (14 units) are created.</li>
+            <li><strong>Copper Axe:</strong> 1x Copper Axe Head + 1x Wood (+ 2 coins)</li>
+            <li><strong>Copper Pickaxe:</strong> 1x Copper Pickaxe Head + 1x Wood (+ 2 coins)</li>
+            <li><strong>Copper Shovel:</strong> 1x Copper Shovel Head + 1x Wood (+ 2 coins)</li>
         </ul>
 
-        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">COPPER ARMOR (UNIT COSTS)</h5>
+        <h5 class="pixel-text" style="color: #ff7f27; margin-top: 10px;">ARMOR (METALWORKER ONLY)</h5>
+        <p>Copper provides the first layer of metallic defense against cave threats:</p>
         <ul class="wiki-list">
-            <li>Light Armor: 14 units of Copper.</li>
-            <li>Normal Armor: 26 units of Copper.</li>
-            <li>Heavy Armor: 38 units of Copper.</li>
+            <li><strong>Light Copper Armor:</strong> 14x Copper (+ 25 coins)</li>
+            <li><strong>Normal Copper Armor:</strong> 26x Copper (+ 30 coins)</li>
+            <li><strong>Heavy Copper Armor:</strong> 38x Copper (+ 35 coins)</li>
         </ul>
         
-        <h5 class="pixel-text" style="color: #00ff00; margin-top: 20px;">FOOD PROCESSING</h5>
-        <p>The Copper Knife is crucial for food processing, particularly for filleting all types of fish. Using this knife reduces the crafting time to an interval between 10000 and 25000 seconds per operation.</p>
-        
-        <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">ECONOMIC VALUE AND LOGISTICS</h3>
-        <p>Economically, raw Copper is a tradable asset that offers a decent return on initial investment:</p>
+        <h3 class="pixel-text" style="color: #ff7f27; margin-top: 20px;">ECONOMIC VALUE</h3>
         <ul class="wiki-list">
-            <li>Sale Value: Raw Copper can be sold for 15 coins per unit to the metalworker.</li>
-            <li>Logistics: Copper, like all resources, contributes to the player's maximum inventory capacity, which is fixed at 80 units. Its collection requires transport planning to prevent overloading.</li>
+            <li><strong>Sale Value:</strong> Raw copper can be sold for <strong>5 coins</strong> per unit.</li>
+            <li><strong>Processing:</strong> Refining "Raw Copper" into "Copper" at the Metalworker is a free service, requiring only the raw material.</li>
         </ul>
-	`,
+    `,
     infobox: {
         "Object Name": "Copper",
         "Type": "Metallic Mineral (Level 1)",
-        "Primary Location": "Cave Level 1 (common) and Cave Level 2 (rare)",
-        "Map Symbol": "█ (Red)",
-        "Sale Value (Raw)": "7 Coins",
-        "Energy Cost (Pickaxe)": "From 5 (Iron Pickaxe) to 15 (Stone pickaxe) of Energy",
-        "Crafting Category": "Tools, Armor, Weapons, Utility"
+        "Primary Location": "Cave Level 1 & 2 (common), Level 3 & 4 (rare)",
+        "Map Symbol": "█ (Orange/Bronze)",
+        "Sale Value (Raw)": "5 Coins",
+        "Energy Cost (Pickaxe)": "10 Energy (Copper Pickaxe)",
+        "Crafting Category": "Tools, Armor, Components"
     }
 };
