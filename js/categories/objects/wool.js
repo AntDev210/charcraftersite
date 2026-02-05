@@ -21,7 +21,7 @@ const article_Wool = {
 	`,
     infobox: {
         "Object Name": "Wool",
-        "Added In": "AlpDev 1.X",
+        "Added In": "AlpDev 1.6",
         "Value Consumption": "None (Non-Consumable/Non-Tool)",
         "Storage": "Standard Inventory (Max. 80 slots)",
         "Primary Origin Animal(s)": "Sheep",
