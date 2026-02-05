@@ -62,11 +62,14 @@ const article_Copper = {
     `,
     infobox: {
         "Object Name": "Copper",
+        "Added In": "AlpDev 1.6",
+        "Value Consumption": "None (Non-Consumable/Non-Tool)",
+        "Storage": "Standard Inventory (Max. 80 slots)",
         "Type": "Metallic Mineral (Level 1)",
+        "Item Category": "mineral/Base Resource",
+        "Energy Cost (Pickaxe)": "From 5 (Iron Pickaxe) to 15 (Stone pickaxe) of Energy",
         "Primary Location": "Cave Level 1 (common) and Level 2 (rare)",
         "Map Symbol": "█ (Orange/Bronze)",
         "Sale Value (Raw)": "5 Coins",
-        "Energy Cost (Pickaxe)": "10 Energy (Copper Pickaxe)",
-        "Crafting Category": "Tools, Armor, Components"
     }
 };
