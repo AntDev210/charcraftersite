@@ -66,9 +66,9 @@ const article_Copper = {
         "Value Consumption": "None (Non-Consumable/Non-Tool)",
         "Storage": "Standard Inventory (Max. 80 slots)",
         "Type": "Metallic Mineral (Level 1)",
-        "Item Category": "mineral/Base Resource",
+        "Item Category": "Mineral/Base Resource",
         "Energy Cost (Pickaxe)": "From 5 (Iron Pickaxe) to 15 (Stone pickaxe) of Energy",
-        "Primary Location": "Cave Level 1 (common) and Level 2 (rare)",
+        "Primary Location": "Cave Level 1 (Common) and Level 2 (Rare)",
         "Map Symbol": "█ (Orange/Bronze)",
         "Sale Value (Raw)": "5 Coins",
     }
