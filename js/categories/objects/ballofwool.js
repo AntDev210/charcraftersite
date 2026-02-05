@@ -55,7 +55,7 @@ const article_BallOfWool = {
     infobox: {
         "Object Name": "Ball of Wool",
         "Type": "Intermediate Crafting Material",
-        "Added In": "AlpDev 1.X",
+        "Added In": "AlpDev 1.6",
         "Value Consumption": "None (Non-Consumable/Non-Tool)",
         "Storage": "Standard Inventory (Max. 80 slots)",
         "Primary Origin Resource": "Wool (raw)",
