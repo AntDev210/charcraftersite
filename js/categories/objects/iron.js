@@ -70,5 +70,3 @@ const article_Iron = {
         "Crafting Category": "Tools, Armor, Components"
     }
 };
-
-export default article_Iron;
