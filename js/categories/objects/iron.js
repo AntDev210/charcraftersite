@@ -56,7 +56,7 @@ const article_Iron = {
         
         <h3 class="pixel-text" style="color: #00ff00; margin-top: 20px;">ECONOMIC VALUE</h3>
         <ul class="wiki-list">
-            <li><strong>Sale Value:</strong> Raw iron can be sold for <strong>10 coins</strong> per unit.</li>
+            <li><strong>Sale Value:</strong> Iron can be sold for 10 coins per unit.</li>
             <li><strong>Crafting Note:</strong> Processing "Raw Iron" into "Iron" at the Metalworker is free (0 coins) but requires 1 unit of the raw resource.</li>
         </ul>
     `,
